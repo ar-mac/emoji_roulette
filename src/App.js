@@ -7,6 +7,7 @@ import './App.css';
 class App extends Component {
   state = {
     index: 0,
+    previousEmojis: [],
   };
 
   resetIndex = () => {
@@ -14,8 +15,10 @@ class App extends Component {
   };
 
   getRandomEmoji = () => {
+    const index = Math.floor(Math.random() * 70);
     this.setState({
-      index: Math.floor(Math.random() * 70)
+      index,
+      previousEmojis: [Emojis[index], ...this.state.previousEmojis].slice(0, 6)
     });
   };
 
@@ -24,15 +27,22 @@ class App extends Component {
       <div className="App">
         <h2>Welcome to Emoji Routlette</h2>
         <button onClick={this.getRandomEmoji}>Get new emoji</button>
-        {(this.state.index < Emojis.length)
-          ? <DisplayEmoji
-            key={this.state.index}
-            index={this.state.index}
-            resetFn={this.resetIndex}
-            getNewEmoji={this.getRandomEmoji}
-          />
-          : <div>No emoji for index: {this.state.index}</div>}
-
+        {
+          (this.state.index < Emojis.length)
+            ? <DisplayEmoji
+              key={this.state.index}
+              index={this.state.index}
+              resetFn={this.resetIndex}
+              getNewEmoji={this.getRandomEmoji}
+            />
+            : <div>No emoji for index: {this.state.index}</div>
+        }
+        <hr />
+        {
+          this.state.previousEmojis.slice(1, 6).map((emojiObj) => (
+            <div key={emojiObj.codepoint}>{emojiObj.codepoint}</div>
+          ))
+        }
       </div>
     );
   }
