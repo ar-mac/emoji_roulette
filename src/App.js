@@ -22,11 +22,16 @@ class App extends Component {
     });
   };
 
+  handleChange = () => {
+    console.log(`this.input.value: `, this.input.value);
+  };
+
   render() {
     return (
       <div className="App">
         <h2>Welcome to Emoji Routlette</h2>
         <button onClick={this.getRandomEmoji}>Get new emoji</button>
+        <div><input type="text" onChange={this.handleChange} ref={(node) => this.input = node} /></div>
         {
           (this.state.index < Emojis.length)
             ? <DisplayEmoji
