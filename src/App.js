@@ -8,6 +8,7 @@ class App extends Component {
   state = {
     index: 0,
     previousEmojis: [],
+    resetTime: 2,
   };
 
   resetIndex = () => {
@@ -22,8 +23,10 @@ class App extends Component {
     });
   };
 
-  handleChange = () => {
-    console.log(`this.input.value: `, this.input.value);
+  handleChange = ({target: { value: resetTime}}) => {
+    if (isNaN(resetTime)) { return }
+
+    this.setState({ resetTime: +resetTime });
   };
 
   render() {
@@ -31,13 +34,13 @@ class App extends Component {
       <div className="App">
         <h2>Welcome to Emoji Routlette</h2>
         <button onClick={this.getRandomEmoji}>Get new emoji</button>
-        <div><input type="text" onChange={this.handleChange} ref={(node) => this.input = node} /></div>
+        <div><input type="text" onChange={this.handleChange} defaultValue={this.state.resetTime} /></div>
         {
           (this.state.index < Emojis.length)
             ? <DisplayEmoji
               key={this.state.index}
               index={this.state.index}
-              resetTime={this.input ? (+this.input.value || 4) : 2}
+              resetTime={this.state.resetTime}
               resetFn={this.resetIndex}
               getNewEmoji={this.getRandomEmoji}
             />
@@ -46,7 +49,7 @@ class App extends Component {
         <hr />
         {
           this.state.previousEmojis.slice(1, 6).map((emojiObj) => (
-            <div key={emojiObj.codepoint}>{emojiObj.codepoint}</div>
+            <div key={index}>{emojiObj.codepoint}</div>
           ))
         }
       </div>
