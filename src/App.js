@@ -9,9 +9,13 @@ class App extends Component {
     index: 0,
   };
 
+  resetIndex = () => {
+    this.setState({ index: 0 });
+  };
+
   getRandomEmoji = () => {
     this.setState({
-      index: Math.floor(Math.random() * 200)
+      index: Math.floor(Math.random() * 70)
     });
   };
 
@@ -21,7 +25,12 @@ class App extends Component {
         <h2>Welcome to Emoji Routlette</h2>
         <button onClick={this.getRandomEmoji}>Get new emoji</button>
         {(this.state.index < Emojis.length)
-          ? <DisplayEmoji index={this.state.index} />
+          ? <DisplayEmoji
+            key={this.state.index}
+            index={this.state.index}
+            resetFn={this.resetIndex}
+            getNewEmoji={this.getRandomEmoji}
+          />
           : <div>No emoji for index: {this.state.index}</div>}
 
       </div>
