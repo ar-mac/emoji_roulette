@@ -16,7 +16,7 @@ class DisplayEmoji extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.secondsPassed === 10) {
+    if (this.state.secondsPassed === 2) {
       this.props.getNewEmoji();
     }
   }
