@@ -37,6 +37,7 @@ class App extends Component {
             ? <DisplayEmoji
               key={this.state.index}
               index={this.state.index}
+              resetTime={this.input ? (+this.input.value || 4) : 2}
               resetFn={this.resetIndex}
               getNewEmoji={this.getRandomEmoji}
             />
