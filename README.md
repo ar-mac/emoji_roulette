@@ -53,9 +53,17 @@
   * Add html input
   * (1 way) Connect input to react as uncontrolled component - use `onBlur` handler and `ref` property. Blur handler should get value from the input available via ref property.
   * (2 way) Change input to controlled component - use `value` and `onChange` handler. onChange handler should call `setState` saving new value received as parameter.
+* (extra) ReactDevTools browser add-on
+
+* Extract behaviour functionality from DisplayEmoji into HOC
+  * DisplayEmoji back to functional
+  * Extract no emoji info to functional
+  * Wrap both components in HOC
+  * When rendering 5 last emojis use DisplayEmoji component but without HOC as they do not need behaviour
+* Use axios to make requests to external api
+
 * (extra) Jest specs
   * enzyme
   * `setup` pattern
   * snapshot specs
   * tests for implementation
-* (extra) ReactDevTools browser add-on
