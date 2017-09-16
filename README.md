@@ -1,6 +1,7 @@
 ## Features to be implemented
 
 ### Done during CoderDojo at 24-Aug-2017
+
 * Display random emoji in `App` component
   * Import array of emojis from `src/assets/emojis.js` to component file
   * Display first emoji from the array (codepoint and emoji itself)
@@ -19,44 +20,89 @@
   * add `twemoji` package via npm
   * `import twemoji from 'twemoji'`
   * follow the package documentation
-* Extract emoji rendering markup to separate component `src/components/DisplaySelectedEmoji.js`
+* Extract emoji rendering markup to separate component `src/components/DisplayEmoji.js`
   * Use functional component (just a fat arrow returning markup)
     * accept `props` as parameter to this function
   * import extracted component in main one and render it
-  * Pass selected index to `DisplaySelectedEmoji` as prop
-  * In `DisplaySelectedEmoji` replace usages of this.state.index with props.index
+  * Pass selected index to `DisplayEmoji` as prop
+  * In `DisplayEmoji` replace usages of this.state.index with props.index
 * Add `proptypes` package via npm
-  * Import PropTypes and define them for `DisplaySelectedEmoji`
+  * Import PropTypes and define them for `DisplayEmoji`
 
 --------------
 
 ### Done during CoderDojo at 07-Sep-2017
-* Implement resetting index in `DisplaySelectedEmoji` component
+
+* Implement resetting index in `DisplayEmoji` component
   * Create method `resetIndex` in `App` resetting `state.index` to `0`
-  * Pass this method to `DisplaySelectedEmoji` as `resetFn` property (the same way index property is passed)
-  * Add button in `DisplaySelectedEmoji` component
+  * Pass this method to `DisplayEmoji` as `resetFn` property (the same way index property is passed)
+  * Add button in `DisplayEmoji` component
   * Connect `resetFn` method to button via `onClick` property (that way child can change parent data - data goes down, function calls go up - unidirectional data flow)
-* In `DisplaySelectedEmoji` add counter for how long is emoji visible
-  * Migrate `DisplaySelectedEmoji` from functional to class-ical component type.
-  * Add `secondsPassed` to `DisplaySelectedEmoji` component state with initial value 0
-  * Use `componentDidMount` react lifecycle method for `DisplaySelectedEmoji` and `setInterval` js function to increment `this.state.secondsPassed` every 1 second.
-  * Fix counter not resetting on selecting new emoji by providing unique `key` property `<DisplaySelectedEmoji key={this.state.index}>`
-  * Fix errors about setting state of unmounted component by saving interval id to `DisplaySelectedEmoji` state and in `componentWillUnmount` lifecycle hook add pass interval id as argument to browser function `clearInterval`
+* In `DisplayEmoji` add counter for how long is emoji visible
+  * Migrate `DisplayEmoji` from functional to class-ical component type.
+  * Add `secondsPassed` to `DisplayEmoji` component state with initial value 0
+  * Use `componentDidMount` react lifecycle method for `DisplayEmoji` and `setInterval` js function to increment `this.state.secondsPassed` every 1 second.
+  * Fix counter not resetting on selecting new emoji by providing unique `key` property `<DisplayEmoji key={this.state.index}>`
+  * Fix errors about setting state of unmounted component by saving interval id to `DisplayEmoji` state and in `componentWillUnmount` lifecycle hook add pass interval id as argument to browser function `clearInterval`
   (setState is async, so it does not guarantee property in this.state.intervalId to be updated in the line below)
 * Implement getting new emoji automatically after 10s
-  * Pass `getRandowEmoji` method as prop to `DisplaySelectedEmoji`
+  * Pass `getRandowEmoji` method as prop to `DisplayEmoji`
   * When `secondsPassed` is 10, call method received from parent to get new emoji.
 * Display list of last 5 emojis
   * Save 5 last displayed emojis (not indexes) in main component state.
-  * Below currently selected emoji, map over array of stored previous emojis and reuse `DisplaySelectedEmoji` component for every one.
+  * Below currently selected emoji, map over array of stored previous emojis and reuse `DisplayEmoji` component for every one.
   (key property needs to be unique only for the siblings)
 * (extra) Add input for getting time when new emoji should be selected
   * Add html input
   * (1 way) Connect input to react as uncontrolled component - use `onBlur` handler and `ref` property. Blur handler should get value from the input available via ref property.
-  * (2 way) Change input to controlled component - use `value` and `onChange` handler. onChange handler should call `setState` saving new value received as parameter.
 * (extra) ReactDevTools browser add-on
 
 --------------
+
+* Extract behaviour functionality from DisplayEmoji into HOC (Higher Order Component)
+  * Create new file `withTimer.js` in `src/assets` folder
+    * Create and export fat arrow function `withTimer` which receives `WrappedComponent` property
+    * Make function `withTimer` return class component `WithTimer` (import React, Component, PropTypes)
+    * Copy all methods handling secondsPassed state into `WithTimer` and remove them from `DisplayEmoji`
+    * Rename `getNewEmoji` to `resetHandler` and update name of this prop being send in `App`
+    * Rename `resetFn` property and `resetIndex` method to `clearIndex` wherever they are used, to prevent confusion with `resetHandler` property
+    * Define `propTypes` for `WithTimer` class before returning it from `withTimer`
+  * In `DisplayEmoji` change binding `this.state.secondsPassed` into `secondsPassed` and destructure it from props (just like index and resetFn properties)
+    * Update `propTypes` for `DisplayEmoji` to contain index, resetFn and secondsPassed properties
+  * Display div with `secondsPassed` conditionally when it is `>= 0` to handle situations when this property is not passed.
+  * Change DisplayEmoji back to functional component
+  * Create new file `src/assets/NoEmojiMessage.js`
+    * Extract markup rendering info about no emoji for given index to functional component to file `NoEmojiMessage.js`
+    * functional component should accept index property
+    * change `this.state.index` to just `index` received as argument
+    * add conditional displaying of 'secondsPassed' just like in DisplayEmoji and accept it as argument
+* Wrap both components in HOCs and use them in `App`
+  * In `NoEmojiMessage.js`
+    * Import `withTimer` HOC
+    * Add default export for `withTimer(NoEmojiMessage)` and use it in `App.js`
+    * Add `resetTime` and `resetHandler` and `key` properties to NoEmojiMessage component in `App.js`
+  * In `DisplayEmoji.js`
+    * Import `withTimer` HOC
+    * Add default export for `withTimer(DisplayEmoji)` and use it in `App`
+* When rendering 5 last emojis use `DisplayEmoji` component without HOC as they do not need timer functionality
+  * Make `clearIndex` property optional and render button only when it is provided
+  * Update `state.previousEmojis` to contain indexes not whole Emojis
+  * Replace div rendering emoji in function mapping through `previousEmojis` with `DisplayEmoji`
+* (extra) Use axios to make requests to external api
+* (extra) Storing data using localStorage
+
+* (extra) Add input for getting time when new emoji should be selected
+  * (2 way) Change input to controlled component - use `value` and `onChange` handler. onChange handler should call `setState` saving new value received as parameter.
+  * (Using this pattern you can prevent updating input value/reformat it which is useful when having inputs for area code or phone number)
+* (extra) Add form for adding new emojis
+  * Store emojis in App state to allow for modifications
+  * Add inputs for emoji and codepoint + validation that they match (one setState with computed key, to handle both inputs)
+  * Add validation to prevent adding already existing emoji and to adding emoji twice
+  * Add multi select tag with options for emoji group
+* Allow adding multiple entries with "Add more" button
+<Some feature to have submit/onChange function wrapped along the way>
+
+<some feature for using this.props.children>
 
 * (extra) Jest specs
   * enzyme
