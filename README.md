@@ -1,6 +1,6 @@
 ## Features to be implemented
 
-###Done during CoderDojo at 24-Aug-2017
+### Done during CoderDojo at 24-Aug-2017
 * Display random emoji in `App` component
   * Import array of emojis from `src/assets/emojis.js` to component file
   * Display first emoji from the array (codepoint and emoji itself)
@@ -30,6 +30,7 @@
 
 --------------
 
+### Done during CoderDojo at 07-Sep-2017
 * Implement resetting index in `DisplaySelectedEmoji` component
   * Create method `resetIndex` in `App` resetting `state.index` to `0`
   * Pass this method to `DisplaySelectedEmoji` as `resetFn` property (the same way index property is passed)
@@ -53,9 +54,12 @@
   * Add html input
   * (1 way) Connect input to react as uncontrolled component - use `onBlur` handler and `ref` property. Blur handler should get value from the input available via ref property.
   * (2 way) Change input to controlled component - use `value` and `onChange` handler. onChange handler should call `setState` saving new value received as parameter.
+* (extra) ReactDevTools browser add-on
+
+--------------
+
 * (extra) Jest specs
   * enzyme
   * `setup` pattern
   * snapshot specs
   * tests for implementation
-* (extra) ReactDevTools browser add-on
