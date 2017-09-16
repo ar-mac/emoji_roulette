@@ -1,6 +1,6 @@
 ## Features to be implemented
 
-###Done during CoderDojo at 24-Aug-2017
+### Done during CoderDojo at 24-Aug-2017
 * Display random emoji in `App` component
   * Import array of emojis from `src/assets/emojis.js` to component file
   * Display first emoji from the array (codepoint and emoji itself)
@@ -30,7 +30,7 @@
 
 --------------
 
-###Done during CoderDojo at 07-Sep-2017
+### Done during CoderDojo at 07-Sep-2017
 * Implement resetting index in `DisplaySelectedEmoji` component
   * Create method `resetIndex` in `App` resetting `state.index` to `0`
   * Pass this method to `DisplaySelectedEmoji` as `resetFn` property (the same way index property is passed)
