@@ -7,19 +7,19 @@ import './App.css';
 class App extends Component {
   state = {
     index: 0,
-    previousEmojis: [],
+    previousEmojis: [Emojis[0]],
     resetTime: 2,
   };
 
-  resetIndex = () => {
+  clearIndex = () => {
     this.setState({ index: 0 });
   };
 
   getRandomEmoji = () => {
-    const index = Math.floor(Math.random() * 70);
+    const index = Math.floor(Math.random() * 100);
     this.setState({
       index,
-      previousEmojis: [Emojis[index], ...this.state.previousEmojis].slice(0, 6)
+      previousEmojis: [Emojis[index], ...this.state.previousEmojis].slice(0, 9)
     });
   };
 
@@ -48,7 +48,7 @@ class App extends Component {
         }
         <hr />
         {
-          this.state.previousEmojis.slice(1, 6).map((emojiObj) => (
+          this.state.previousEmojis.slice(1, 6).map((emojiObj = {}, index) => (
             <div key={index}>{emojiObj.codepoint}</div>
           ))
         }
