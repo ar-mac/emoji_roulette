@@ -17,3 +17,44 @@ input {
 img {
   height: 30px;
 }
+
+.emoji-card {
+  background-color: #eee;
+  display: inline-block;
+  margin: 15px;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.6);
+  position: relative;
+  line-height: 35px;
+}
+
+.emoji-card__body {
+  width: 250px;
+  padding: 10px;
+}
+
+.emoji-card__head {
+  border-radius: 10px 10px 0 0;
+  background-color: #ddd;
+  width: 250px;
+  position: relative;
+  left: 0;
+  top: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.emoji-card__head > div {
+  padding-top: 10px;
+}
+
+.emoji-card__head div:last-of-type {
+  padding-bottom: 10px;
+}
+
+.emoji-card__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}

@@ -86,20 +86,21 @@
     * Add default export for `withTimer(DisplayEmoji)` and use it in `App`
 * When rendering 5 last emojis use `DisplayEmoji` component without HOC as they do not need timer functionality
   * Make `clearIndex` property optional and render button only when it is provided
-  * Update `state.previousEmojis` to contain indexes not whole Emojis
-  * Replace div rendering emoji in function mapping through `previousEmojis` with `DisplayEmoji`
-* (extra) Use axios to make requests to external api
-* (extra) Storing data using localStorage
+  * Update `state.previousEmojis` to contain indexes not whole Emojis (update state initialization and `getRandomEmoji`)
+  * Replace div rendering emoji in function mapping through `previousEmojis` with `DisplayEmoji` or `NoEmojiMessage` depending on index value being less than `Emojis.length`
 
-* (extra) Add input for getting time when new emoji should be selected
+* Add input for getting time when new emoji should be selected
   * (2 way) Change input to controlled component - use `value` and `onChange` handler. onChange handler should call `setState` saving new value received as parameter.
   * (Using this pattern you can prevent updating input value/reformat it which is useful when having inputs for area code or phone number)
-* (extra) Add form for adding new emojis
+* (extra) Add form for adding new emojis (http://unicode.org/Public/emoji/5.0/emoji-data.txt)
   * Store emojis in App state to allow for modifications
   * Add inputs for emoji and codepoint + validation that they match (one setState with computed key, to handle both inputs)
   * Add validation to prevent adding already existing emoji and to adding emoji twice
-  * Add multi select tag with options for emoji group
+  * Add multi select tag for providing emoji group [face, funny, food, thing]
 * Allow adding multiple entries with "Add more" button
+
+* (extra) Use axios to make requests to external api
+* (extra) Storing data using localStorage
 <Some feature to have submit/onChange function wrapped along the way>
 
 <some feature for using this.props.children>
