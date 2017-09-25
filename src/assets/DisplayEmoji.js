@@ -8,7 +8,7 @@ export class DisplayEmoji extends Component {
   render() {
     const { index, clearIndex, secondsPassed, emoji } = this.props;
     const twemojiMarkup = {
-      __html: twemoji.parse(emoji.emoji)
+      __html: twemoji.parse(emoji.emojiIcon)
     };
 
     return (
@@ -18,7 +18,7 @@ export class DisplayEmoji extends Component {
           {!!clearIndex && <div><button onClick={clearIndex}>Clear index</button></div>}
         </div>
         <div className="emoji-card__body">
-          <div>emoji: {emoji.emoji}</div>
+          <div>emoji: {emoji.emojiIcon}</div>
           <div>code: {emoji.codepoint}</div>
           <div>parsed: {String.fromCodePoint(emoji.codepoint)}</div>
           <div>twemoji: <div dangerouslySetInnerHTML={twemojiMarkup}/></div>
