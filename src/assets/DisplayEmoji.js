@@ -2,45 +2,28 @@ import React, { Component } from 'react';
 import twemoji from 'twemoji'
 import PropTypes from 'proptypes';
 
-import { Emojis } from './emojis.js';
+import { withTimer } from './withTimer';
 
-class DisplayEmoji extends Component {
-  state = {
-    secondsPassed: 0,
-  };
-
-  componentDidMount() {
-    this.intervalId = setInterval(() => {
-      this.setState({ secondsPassed: this.state.secondsPassed + 1 })
-    }, 1000);
-  }
-
-  componentDidUpdate() {
-    if (this.state.secondsPassed === this.props.resetTime) {
-      this.props.getNewEmoji();
-    }
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.intervalId);
-  }
-
+export class DisplayEmoji extends Component {
   render() {
-    const { index, resetFn } = this.props;
-    const selectedEmoji = Emojis[index];
+    const { index, clearIndex, secondsPassed, emoji } = this.props;
     const twemojiMarkup = {
-      __html: twemoji.parse(selectedEmoji.emoji)
+      __html: twemoji.parse(emoji.emoji)
     };
 
     return (
-      <div className="test">
-        <div>secondsPassed: {this.state.secondsPassed}</div>
-        <button onClick={resetFn}>Reset index</button>
-        <div>emoji: {selectedEmoji.emoji}</div>
-        <div>codepoint: {selectedEmoji.codepoint}</div>
-        <div>parsed codepoint: {String.fromCodePoint(selectedEmoji.codepoint)}</div>
-        <div>twemoji: <div dangerouslySetInnerHTML={twemojiMarkup}/></div>
-        <div>index: {index}</div>
+      <div className="emoji-card">
+        <div className="emoji-card__head">
+          {secondsPassed >= 0 && <div>secondsPassed: {secondsPassed}</div>}
+          {!!clearIndex && <div><button onClick={clearIndex}>Clear index</button></div>}
+        </div>
+        <div className="emoji-card__body">
+          <div>emoji: {emoji.emoji}</div>
+          <div>code: {emoji.codepoint}</div>
+          <div>parsed: {String.fromCodePoint(emoji.codepoint)}</div>
+          <div>twemoji: <div dangerouslySetInnerHTML={twemojiMarkup}/></div>
+          <div>index: {index}</div>
+        </div>
       </div>
     )
   }
@@ -50,4 +33,4 @@ DisplayEmoji.propTypes = {
   index: PropTypes.number.isRequired,
 };
 
-export default DisplayEmoji
+export default withTimer(DisplayEmoji);
