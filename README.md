@@ -97,21 +97,64 @@
 
 -------------
 
-* (extra) Add form for adding new emojis (http://unicode.org/Public/emoji/5.0/emoji-data.txt)
-  * Store emojis in App state to allow for modifications
-  * Add inputs for emoji and codepoint + validation that they match (one setState with computed key, to handle both inputs)
-  * Add validation to prevent adding already existing emoji and to adding emoji twice
+##Features
+* validation
+* error handling
+* scoped fields (price range, disabling options depending on other input)
+* select/multiselect
+* checkboxes
+* array of fields (you can add/remove them)
+* (extra) curated fragments from https://www.youtube.com/watch?v=-tDy7ds0dag
+
+## Form schema
+* **age** **-** *presence* **-** if below 13 hides form
+* **username** **-** *presence length and regex (serverside already taken from the predefined list)*
+* **email** **-** *presence regex (serverside already taken from the predefined list)*
+* **addresses[]** **-** *inputs not validated if every is empty* **-** can add/remove from the list
+  * **addresses[]city** **-** *presence presence in predefined list* **-** it automatically fills zip-code
+  * **addresses[]zip-code** **-** *presence presence in predefined list* **-** it automatically fills city, auto formatting
+  * **addresses[]address** **-** *presence format of street and home/apartment number*
+* **interests[]** **-** --- **-** list of checkboxes
+* **favourite_things** **-** --- **-** multiselect input
+   
+
+# React Form
+* Initial setup for React Form
+  * Add React Form to the dependencies
+  * Get emojis from `LocalStorage` or File and store them in `App` state.
+  * Add new component `AddEmojiForm` accepting properties `emojis` and `submitHandler` (empty for now)
+  * In `App`
+* In `AddEmojiForm` implement form for adding new emojis (http://unicode.org/Public/emoji/5.0/emoji-data.txt)
+  * Add inputs for emoji and codepoint (one setState with computed key, to handle both inputs)
+  * Connect inputs that adding emoji assigns its codepoint and vice versa 
   * Add multi select tag for providing emoji group [face, funny, food, thing]
+  * Add validation to prevent adding already existing emoji
 * Allow adding multiple entries with "Add more" button
+  * Add validation preventing adding same emoji twice in one submit
+  * Add removing emojis from form
 
+
+
+Na następne CD mam zamiar wprowadzić kilka zmian, które pomogą osobom słabszym, ale nie spowolnią całości postępu.
+- Będę trzymał się swoich wytycznych, i po każdej z nich robił commit + push tak aby osoby słabsze mogły sobie to ściągać na bierząco bez konieczności przepisywania. To załatwi problem, mojej chaotyczności, utraty uwagi przez uczestników przy przepisywaniu, spowolnienia związanego z sypiącą się implementacją u kilku osób, a w konsekwencji potrzeby kilku prowadzących.
+- Przed samą implementacją i tłumaczeniem tematu, jeśli będzie to miało sens to przedstawię w formie graficznej jak omawiana rzecz jest zbudowana, działa, wiąże się z innymi, tak aby to bardziej schematycznie mogli zobaczyć zanim zacznę kodować.
+
+
+
+
+## Topics
 * (extra) Use axios to make requests to external api
-* (extra) Storing data using localStorage
-<Some feature to have submit/onChange function wrapped along the way>
 
-<some feature for using this.props.children>
-
-* (extra) Jest specs
+### Testing with Jest
+* Jest specs
   * enzyme
   * `setup` pattern
   * snapshot specs
   * tests for implementation
+
+### React Router
+
+### React Redux
+  * Redux thunk
+
+### Redux Form
