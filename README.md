@@ -59,6 +59,8 @@
 
 --------------
 
+### Done during CoderDojo at 21-Sep-2017
+
 * Extract behaviour functionality from DisplayEmoji into HOC (Higher Order Component)
   * Create new file `withTimer.js` in `src/assets` folder
     * Create and export fat arrow function `withTimer` which receives `WrappedComponent` property
@@ -92,6 +94,9 @@
 * Add input for getting time when new emoji should be selected
   * (2 way) Change input to controlled component - use `value` and `onChange` handler. onChange handler should call `setState` saving new value received as parameter.
   * (Using this pattern you can prevent updating input value/reformat it which is useful when having inputs for area code or phone number)
+
+-------------
+
 * (extra) Add form for adding new emojis (http://unicode.org/Public/emoji/5.0/emoji-data.txt)
   * Store emojis in App state to allow for modifications
   * Add inputs for emoji and codepoint + validation that they match (one setState with computed key, to handle both inputs)

@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 
-import DisplayEmoji from './assets/DisplayEmoji';
+import DisplayEmojiWithTimer, { DisplayEmoji } from './assets/DisplayEmoji';
+import NoEmojiWithTimer, { NoEmojiMessage } from './assets/NoEmojiMessage';
 import { Emojis } from './assets/emojis.js';
 import './App.css';
 
 class App extends Component {
   state = {
     index: 0,
-    previousEmojis: [Emojis[0]],
-    resetTime: 2,
+    previousEmojis: [0],
+    resetTime: 0,
+    emojis: Emojis,
+    formData: { emoji: '', codepoint: '1235215' },
   };
 
   clearIndex = () => {
@@ -19,38 +22,81 @@ class App extends Component {
     const index = Math.floor(Math.random() * 100);
     this.setState({
       index,
-      previousEmojis: [Emojis[index], ...this.state.previousEmojis].slice(0, 9)
+      previousEmojis: [index, ...this.state.previousEmojis].slice(0, 9)
     });
   };
 
-  handleChange = ({target: { value: resetTime}}) => {
+  handleChange = ({ target: { value: resetTime } }) => {
     if (isNaN(resetTime)) { return }
 
     this.setState({ resetTime: +resetTime });
   };
 
+  updateValue = (event) => {
+
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   render() {
+    const { resetTime, index, emojis, previousEmojis, formData } = this.state;
+
     return (
       <div className="App">
         <h2>Welcome to Emoji Routlette</h2>
         <button onClick={this.getRandomEmoji}>Get new emoji</button>
-        <div><input type="text" onChange={this.handleChange} defaultValue={this.state.resetTime} /></div>
+        <div><input type="text" onChange={this.handleChange} defaultValue={resetTime} /></div>
         {
-          (this.state.index < Emojis.length)
-            ? <DisplayEmoji
-              key={this.state.index}
-              index={this.state.index}
-              resetTime={this.state.resetTime}
-              resetFn={this.resetIndex}
-              getNewEmoji={this.getRandomEmoji}
+          (index < emojis.length)
+            ? <DisplayEmojiWithTimer
+              key={index}
+              index={index}
+              emoji={emojis[index]}
+              clearIndex={this.clearIndex}
+              resetTime={resetTime}
+              resetHandler={this.getRandomEmoji}
             />
-            : <div>No emoji for index: {this.state.index}</div>
+            : <NoEmojiWithTimer
+              key={index}
+              index={index}
+              resetTime={resetTime}
+              resetHandler={this.getRandomEmoji}
+            />
         }
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="emoji-input">Add emoji</label>
+          <input
+            type="text"
+            name="emoji"
+            id="emoji-input"
+            onChange={this.updateValue}
+            value={formData.emoji}
+          />
+          <hr />
+          <label htmlFor="point-input">Add codepoint</label>
+          <input
+            type="text"
+            name="codepoint"
+            id="point-input"
+            onChange={this.updateValue}
+            value={formData.codepoint}
+          />
+          <hr />
+          <input type="submit" />
+        </form>
         <hr />
         {
-          this.state.previousEmojis.slice(1, 6).map((emojiObj = {}, index) => (
-            <div key={index}>{emojiObj.codepoint}</div>
-          ))
+          previousEmojis.slice(1, 6).map((emojiIndex, index) => {
+            return (emojiIndex < emojis.length)
+              ? <DisplayEmoji
+                key={index}
+                index={emojiIndex}
+                emoji={emojis[emojiIndex]}
+              />
+              : <NoEmojiMessage key={index} index={emojiIndex} />;
+          })
         }
       </div>
     );
