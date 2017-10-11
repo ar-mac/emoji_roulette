@@ -1,0 +1,19 @@
+.register-form {
+  font-size: 18px;
+}
+
+.register-form h2 {
+  text-align: center;
+}
+
+.register-form button {
+  font-size: 14px;
+}
+
+.register-form input {
+  font-size: 18px;
+}
+
+.help-block {
+  font-size: 16px;
+}
