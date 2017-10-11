@@ -3,7 +3,6 @@ import PropTypes from 'proptypes';
 import { isEmpty } from 'lodash';
 
 const userNames = ['user', 'user1', 'Bob', 'Me'];
-const emails = ['user@example.com', 'user1@example.com', 'bob123@example.com', 'me@my.com'];
 
 export const withBackend = (WrappedComponent) => {
   class WithBackend extends Component {
@@ -30,12 +29,6 @@ export const withBackend = (WrappedComponent) => {
       }
       if (formData.userName && userNames.includes(formData.userName)) {
         errors.userName = 'Is already taken';
-      }
-      if (!formData.email) {
-        errors.email = 'Is required';
-      }
-      if (formData.email && emails.includes(formData.email)) {
-        errors.email = 'Is already taken';
       }
 
       return errors
