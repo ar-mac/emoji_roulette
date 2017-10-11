@@ -25,7 +25,7 @@ class RegisterForm extends Component {
 
   render() {
     return (
-      <div className="row col-md-6 col-md-offset-3">
+      <div className="register-form row col-md-6 col-md-offset-3">
         <form onSubmit={this.submit}>
           Form goes here
           <br />
