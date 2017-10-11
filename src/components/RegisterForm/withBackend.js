@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
+import { isEmpty } from 'lodash';
+
+const userNames = ['user', 'user1', 'Bob', 'Me'];
+const emails = ['user@example.com', 'user1@example.com', 'bob123@example.com', 'me@my.com'];
 
 export const withBackend = (WrappedComponent) => {
   class WithBackend extends Component {
@@ -8,7 +12,7 @@ export const withBackend = (WrappedComponent) => {
         setTimeout(() => {
           const errors = this.validateByBackend(formData);
 
-          if (errors) {
+          if (isEmpty(errors)) {
             reject(errors);
             this.props.handleSubmit(false);
           } else {
@@ -20,7 +24,21 @@ export const withBackend = (WrappedComponent) => {
     };
 
     validateByBackend = (formData) => {
-      //  backend validations go here
+      const errors = {};
+      if (!formData.userName) {
+        errors.userName = 'Is required';
+      }
+      if (formData.userName && userNames.includes(formData.userName)) {
+        errors.userName = 'Is already taken';
+      }
+      if (!formData.email) {
+        errors.email = 'Is required';
+      }
+      if (formData.email && emails.includes(formData.email)) {
+        errors.email = 'Is already taken';
+      }
+
+      return errors
     };
 
     render() {

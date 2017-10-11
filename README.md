@@ -98,7 +98,7 @@
 -------------
 
 ##Features
-* validation
+* validation, and server validation
 * error handling
 * scoped fields (price range, disabling options depending on other input)
 * select/multiselect
@@ -116,31 +116,8 @@
   * **addresses[]address** **-** *presence format of street and home/apartment number*
 * **interests[]** **-** --- **-** list of checkboxes
 * **favourite_things** **-** --- **-** multiselect input
-   
 
-# React Form
-* Initial setup for React Form
-  * Add React Form to the dependencies
-  * Get emojis from `LocalStorage` or File and store them in `App` state.
-  * Add new component `AddEmojiForm` accepting properties `emojis` and `submitHandler` (empty for now)
-  * In `App`
-* In `AddEmojiForm` implement form for adding new emojis (http://unicode.org/Public/emoji/5.0/emoji-data.txt)
-  * Add inputs for emoji and codepoint (one setState with computed key, to handle both inputs)
-  * Connect inputs that adding emoji assigns its codepoint and vice versa 
-  * Add multi select tag for providing emoji group [face, funny, food, thing]
-  * Add validation to prevent adding already existing emoji
-* Allow adding multiple entries with "Add more" button
-  * Add validation preventing adding same emoji twice in one submit
-  * Add removing emojis from form
-
-
-
-Na następne CD mam zamiar wprowadzić kilka zmian, które pomogą osobom słabszym, ale nie spowolnią całości postępu.
-- Będę trzymał się swoich wytycznych, i po każdej z nich robił commit + push tak aby osoby słabsze mogły sobie to ściągać na bierząco bez konieczności przepisywania. To załatwi problem, mojej chaotyczności, utraty uwagi przez uczestników przy przepisywaniu, spowolnienia związanego z sypiącą się implementacją u kilku osób, a w konsekwencji potrzeby kilku prowadzących.
-- Przed samą implementacją i tłumaczeniem tematu, jeśli będzie to miało sens to przedstawię w formie graficznej jak omawiana rzecz jest zbudowana, działa, wiąże się z innymi, tak aby to bardziej schematycznie mogli zobaczyć zanim zacznę kodować.
-
-
-
+-------------
 
 ## Topics
 * (extra) Use axios to make requests to external api

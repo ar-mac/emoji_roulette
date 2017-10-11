@@ -15,8 +15,7 @@ class RegisterForm extends Component {
 
     if (this.validate()) {
       this.setState({ isSending: true });
-      this.props.handleSubmit(this.state.data)
-        .catch(errors => this.setState({ errors }));
+      this.props.handleSubmit(this.state.data).catch(errors => this.setState({ errors }));
     }
   };
 
