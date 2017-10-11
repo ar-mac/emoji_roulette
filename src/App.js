@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     const { isRegistered } = this.state;
     return (
-      <div className="App">
+      <div className="App container">
         <h2>Welcome to Emoji Routlette</h2>
         {
           isRegistered

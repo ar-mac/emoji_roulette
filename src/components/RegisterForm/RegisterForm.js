@@ -25,12 +25,14 @@ class RegisterForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.submit}>
-        Form goes here
-        <br />
-        ᕙ(◔◡◔)ᕗ
-        <div><button>Submit form</button></div>
-      </form>
+      <div className="row col-md-6 col-md-offset-3">
+        <form onSubmit={this.submit}>
+          Form goes here
+          <br />
+          ᕙ(◔◡◔)ᕗ
+          <div><button>Submit form</button></div>
+        </form>
+      </div>
     )
   }
 }
