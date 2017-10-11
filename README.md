@@ -97,21 +97,99 @@
 
 -------------
 
-* (extra) Add form for adding new emojis (http://unicode.org/Public/emoji/5.0/emoji-data.txt)
-  * Store emojis in App state to allow for modifications
-  * Add inputs for emoji and codepoint + validation that they match (one setState with computed key, to handle both inputs)
-  * Add validation to prevent adding already existing emoji and to adding emoji twice
-  * Add multi select tag for providing emoji group [face, funny, food, thing]
-* Allow adding multiple entries with "Add more" button
+* Add form data structure matching `Form schema` below to `RegisterForm` state
 
+### Form schema
+* **age** **-** *presence, numericality* **-** if below 13 hides form
+* **username** **-** *presence length and regex (serverside already taken from the predefined list)*
+* **email** **-** *presence regex (serverside already taken from the predefined list)*
+* **addresses[]** **-** *inputs not validated if every is empty* **-** can add/remove from the list
+  * **addresses[]city** **-** *presence presence in predefined list* **-** it automatically fills zip-code
+  * **addresses[]zipCode** **-** *presence presence in predefined list* **-** it automatically fills city, auto formatting
+
+* Add `handleChange` method updating state property accessible by `event.target.name` with value `event.taget.value`
+  * create method `handleChange`
+  * import `set` method from `lodash` package
+  * set `value` using `name` path to `this.state.data`
+  * setState with modified state assigned to `data` property
+* Add `age` input field and fill up the missing parts
+  ```
+  <div className={cn('form-group', {
+    'has-error': get(X, 'X')
+  })}>
+    <label htmlFor="X">X</label>
+    <input
+      type="text"
+      className="form-control"
+      name="X"
+      placeholder="X"
+      value={X}
+      onChange={X}
+    />
+    {get(X, 'X') &&
+    <span className="help-block">{X}</span>
+    }
+  </div>
+  ```
+  * import cn from classnames package
+* Repeat for `userName email` fields
+* Add `adresses` field lists
+  * Add iteration over addresses in form data and render 
+  ```
+  <div className="panel panel-default" key={index}>
+    <div className="panel-heading">
+      <h3 className="panel-title">address #{index+1}</h3>
+      <button>Remove</button>
+    </div>
+    <div className="panel-body">
+      Panel content
+    </div>
+  </div>
+  ```
+  * Create method removing address of given index from form data
+  * Bind Remove button to removing function
+  * Create method adding new address to form data
+  * After iteration add button triggering adding new address
+  * In place of `Panel content` add `select` element for `city` similar as before, but use nested name like `addresses[0].city` where 0 is current index value
+    * Inside `select` tag put `option` tags for some cities
+  * Add regular input field for `zipCode` and bind it accordingly
+* Bind fields city and zipCode together
+  * Replace their city handleChange method with custom one
+  * In this custom method trigger handleChange of zipCode field with appropriate value
+* Format zipCode field
+  * create method transforming zipCode in raw form into dashed form or in reverse depending on parameter
+  * bind transforming method with format flag to zipCode value
+  * before passing value to handleChange transform it with format flag off
+* Add validations
+  * Make function `validate` return false if errors detected
+  * Update `state.errors` with properly nested error objects according to specification
+  * If no errors detected then return true
+
+
+##Features
+* validation, and server validation
+* error handling
+* formatting
+* scoped fields (price range, disabling options depending on other input)
+* array of fields (you can add/remove them)
+* (extra) curated fragments from https://www.youtube.com/watch?v=-tDy7ds0dag
+* (extra) bootstrap https://bootstrapdocs.com/v3.3.6/docs/css/#overview
+
+-------------
+
+## Topics
 * (extra) Use axios to make requests to external api
-* (extra) Storing data using localStorage
-<Some feature to have submit/onChange function wrapped along the way>
 
-<some feature for using this.props.children>
-
-* (extra) Jest specs
+### Testing with Jest
+* Jest specs
   * enzyme
   * `setup` pattern
   * snapshot specs
   * tests for implementation
+
+### React Router
+
+### React Redux
+  * Redux thunk
+
+### Redux Form
