@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
+import { set, cloneDeep } from 'lodash';
 
 import { withBackend } from "./withBackend";
 
@@ -24,6 +25,12 @@ class RegisterForm extends Component {
       this.setState({ isSending: true });
       this.props.handleSubmit(this.state.data).catch(errors => this.setState({ errors }));
     }
+  };
+
+  handleChange = (event) => {
+    const newData = cloneDeep(this.state.data);
+    set(newData, event.target.name, event.target.value);
+    this.setState({data: newData});
   };
 
   validate = () => {
