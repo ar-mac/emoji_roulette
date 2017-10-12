@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import { get, set, find, cloneDeep } from 'lodash';
 import cn from 'classnames';
+import yup from 'yup';
 
 import { withBackend } from "./withBackend";
 
@@ -25,14 +26,26 @@ class RegisterForm extends Component {
     errors: {},
     isSending: false,
   };
+  schema = yup.object().shape({
+    age: yup.string().required(),
+    username: yup.string().required().min(3).max(50),
+    email: yup.string().email(),
+    addresses: yup.array().of(yup.object().shape({
+      city: yup.string(),
+      zipCode: yup.string(),
+    }))
+  });
 
   submit = (event) => {
     event.preventDefault();
 
-    if (this.validate()) {
-      this.setState({ isSending: true });
-      this.props.handleSubmit(this.state.data).catch(errors => this.setState({ errors }));
-    }
+    this.validate(this.state.data).then(isValid => {
+      console.log(`isValid: `, isValid);
+      if (isValid) {
+        this.setState({ isSending: true });
+        this.props.handleSubmit(this.state.data).catch(errors => this.setState({ errors }));
+      }
+    })
   };
 
   handleChange = ({target}) => {
@@ -73,7 +86,7 @@ class RegisterForm extends Component {
   };
 
   validate = () => {
-    //  validations go here
+    return this.schema.isValid();
   };
 
   render() {
