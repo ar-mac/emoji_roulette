@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
-import { set, cloneDeep } from 'lodash';
+import { get, set, cloneDeep } from 'lodash';
+import cn from 'classnames';
 
 import { withBackend } from "./withBackend";
 
@@ -11,7 +12,7 @@ class RegisterForm extends Component {
       username: '',
       email: '',
       addresses: [
-        {city: '', zipCode: ''},
+        { city: '', zipCode: '' },
       ]
     },
     errors: {},
@@ -30,7 +31,7 @@ class RegisterForm extends Component {
   handleChange = (event) => {
     const newData = cloneDeep(this.state.data);
     set(newData, event.target.name, event.target.value);
-    this.setState({data: newData});
+    this.setState({ data: newData });
   };
 
   validate = () => {
@@ -38,13 +39,31 @@ class RegisterForm extends Component {
   };
 
   render() {
+    const { data, errors } = this.state;
     return (
       <div className="register-form row col-md-6 col-md-offset-3">
         <form onSubmit={this.submit}>
-          Form goes here
+          <div className={cn('form-group', {
+            'has-error': get(errors, 'age')
+          })}>
+            <label htmlFor="age">age</label>
+            <input
+              type="text"
+              className="form-control"
+              name="age"
+              placeholder="Provide your age"
+              value={data.age}
+              onChange={this.handleChange}
+            />
+            {get(errors, 'age') &&
+            <span className="help-block">{errors.age}</span>
+            }
+          </div>
           <br />
           ᕙ(◔◡◔)ᕗ
-          <div><button>Submit form</button></div>
+          <div>
+            <button>Submit form</button>
+          </div>
         </form>
       </div>
     )
