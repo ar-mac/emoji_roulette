@@ -48,7 +48,7 @@ class RegisterForm extends Component {
           })}>
             <label htmlFor="age">age</label>
             <input
-              type="text"
+              type="number"
               className="form-control"
               name="age"
               placeholder="Provide your age"
@@ -57,6 +57,38 @@ class RegisterForm extends Component {
             />
             {get(errors, 'age') &&
             <span className="help-block">{errors.age}</span>
+            }
+          </div>
+          <div className={cn('form-group', {
+            'has-error': get(errors, 'username')
+          })}>
+            <label htmlFor="username">username</label>
+            <input
+              type="text"
+              className="form-control"
+              name="username"
+              placeholder="Provide your username"
+              value={data.username}
+              onChange={this.handleChange}
+            />
+            {get(errors, 'username') &&
+            <span className="help-block">{errors.username}</span>
+            }
+          </div>
+          <div className={cn('form-group', {
+            'has-error': get(errors, 'email')
+          })}>
+            <label htmlFor="email">email</label>
+            <input
+              type="email"
+              className="form-control"
+              name="email"
+              placeholder="Provide your email"
+              value={data.email}
+              onChange={this.handleChange}
+            />
+            {get(errors, 'email') &&
+            <span className="help-block">{errors.email}</span>
             }
           </div>
           <br />
