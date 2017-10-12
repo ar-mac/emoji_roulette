@@ -34,6 +34,17 @@ class RegisterForm extends Component {
     this.setState({ data: newData });
   };
 
+  removeAddress = (index) => {
+    const { addresses } = this.state.data;
+    const newData = cloneDeep(this.state.data);
+    newData.addresses = [
+      ...addresses.slice(0, index),
+      ...addresses.slice(index + 1),
+    ];
+
+    this.setState({ data: newData });
+  };
+
   validate = () => {
     //  validations go here
   };
@@ -91,6 +102,17 @@ class RegisterForm extends Component {
             <span className="help-block">{errors.email}</span>
             }
           </div>
+          {data.addresses.map((address, index) => (
+            <div className="panel panel-default" key={index}>
+              <div className="panel-heading">
+                <h3 className="panel-title">address #{index + 1}</h3>
+                <button onClick={() => this.removeAddress(index)}>Remove</button>
+              </div>
+              <div className="panel-body">
+                Panel content {address.city}
+              </div>
+            </div>
+          ))}
           <br />
           ᕙ(◔◡◔)ᕗ
           <div>
