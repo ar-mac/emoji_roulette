@@ -118,7 +118,26 @@ class RegisterForm extends Component {
                 <button onClick={() => this.removeAddress(index)}>Remove</button>
               </div>
               <div className="panel-body">
-                Panel content {address.city}
+                <div className={cn('form-group', {
+                  'has-error': get(errors, `addresses[${index}].city`)
+                })}>
+                  <label htmlFor={`addresses[${index}].city`}>city</label>
+                  <select
+                    className="form-control"
+                    name={`addresses[${index}].city`}
+                    value={address.city}
+                    onChange={this.handleChange}
+                  >
+                    <option value=""></option>
+                    <option value="Sosnowiec">Sosnowiec</option>
+                    <option value="Bielsko-Biała">Bielsko-Biała</option>
+                    <option value="Cieszyn">Cieszyn</option>
+                    <option value="Czarnobyl">Czarnobyl</option>
+                  </select>
+                  {get(errors, `addresses[${index}].city`) &&
+                  <span className="help-block">{errors.addresses[index].city}</span>
+                  }
+                </div>
               </div>
             </div>
           ))}
