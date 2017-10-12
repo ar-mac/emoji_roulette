@@ -5,7 +5,14 @@ import { withBackend } from "./withBackend";
 
 class RegisterForm extends Component {
   state = {
-    data: {},
+    data: {
+      age: '',
+      username: '',
+      email: '',
+      addresses: [
+        {city: '', zipCode: ''},
+      ]
+    },
     errors: {},
     isSending: false,
   };
