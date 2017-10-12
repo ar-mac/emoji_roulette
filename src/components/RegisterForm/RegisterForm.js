@@ -138,6 +138,22 @@ class RegisterForm extends Component {
                   <span className="help-block">{errors.addresses[index].city}</span>
                   }
                 </div>
+                <div className={cn('form-group', {
+                  'has-error': get(errors, `addresses[${index}].zipCode`)
+                })}>
+                  <label htmlFor={`addresses[${index}].zipCode`}>zip-code</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name={`addresses[${index}].zipCode`}
+                    placeholder="Provide your zip-code"
+                    value={address.zipCode}
+                    onChange={this.handleChange}
+                  />
+                  {get(errors, `addresses[${index}].zipCode`) &&
+                  <span className="help-block">{errors.addresses[index].zipCode}</span>
+                  }
+                </div>
               </div>
             </div>
           ))}
