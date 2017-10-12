@@ -65,8 +65,10 @@ class RegisterForm extends Component {
   handleCityChange = ({target}, index) => {
     this.handleChange({target});
 
-    const city = find(cities, {city: target.value}) || {};
-    this.handleChange({target: {value: city.zipCode, name: `addresses[${index}].zipCode`}})
+    const city = find(cities, {city: target.value});
+    if (city) {
+      this.handleChange({target: {value: city.zipCode, name: `addresses[${index}].zipCode`}})
+    }
   };
 
   validate = () => {
