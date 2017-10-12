@@ -45,6 +45,15 @@ class RegisterForm extends Component {
     this.setState({ data: newData });
   };
 
+  addAddress = () => {
+    const newData = cloneDeep(this.state.data);
+    newData.addresses = [
+      ...newData.addresses,
+      { city: '', zipCode: '' }
+    ];
+    this.setState({data: newData});
+  };
+
   validate = () => {
     //  validations go here
   };
@@ -113,6 +122,7 @@ class RegisterForm extends Component {
               </div>
             </div>
           ))}
+          <div><button onClick={this.addAddress}>Add new address</button></div>
           <br />
           ᕙ(◔◡◔)ᕗ
           <div>
