@@ -4,11 +4,12 @@ import { get, set, find, cloneDeep } from 'lodash';
 import cn from 'classnames';
 
 import { withBackend } from "./withBackend";
+
 const cities = [
-  {city: 'Sosnowiec', zipCode: '00-000'},
-  {city: 'Bielsko-Biała', zipCode: '43-300'},
-  {city: 'Cieszyn', zipCode: '43-430'},
-  {city: 'Czarnobyl', zipCode: '66-666'},
+  { city: 'Sosnowiec', zipCode: '00-000' },
+  { city: 'Bielsko-Biała', zipCode: '43-300' },
+  { city: 'Cieszyn', zipCode: '43-430' },
+  { city: 'Czarnobyl', zipCode: '66-666' },
 ];
 
 class RegisterForm extends Component {
@@ -34,10 +35,10 @@ class RegisterForm extends Component {
     }
   };
 
-  handleChange = (event) => {
+  handleChange = ({target}) => {
     this.setState((currentState) => {
       const newData = cloneDeep(currentState.data);
-      set(newData, event.target.name, event.target.value);
+      set(newData, target.name, target.value);
       return { data: newData };
     });
   };
@@ -59,15 +60,15 @@ class RegisterForm extends Component {
       ...newData.addresses,
       { city: '', zipCode: '' }
     ];
-    this.setState({data: newData});
+    this.setState({ data: newData });
   };
 
-  handleCityChange = ({target}, index) => {
-    this.handleChange({target});
+  handleCityChange = (event, index) => {
+    this.handleChange(event);
 
-    const city = find(cities, {city: target.value});
+    const city = find(cities, { city: event.target.value });
     if (city) {
-      this.handleChange({target: {value: city.zipCode, name: `addresses[${index}].zipCode`}})
+      this.handleChange({ target: { value: city.zipCode, name: `addresses[${index}].zipCode` } })
     }
   };
 
@@ -174,7 +175,9 @@ class RegisterForm extends Component {
               </div>
             </div>
           ))}
-          <div><button onClick={this.addAddress}>Add new address</button></div>
+          <div>
+            <button onClick={this.addAddress}>Add new address</button>
+          </div>
           <br />
           ᕙ(◔◡◔)ᕗ
           <div>
