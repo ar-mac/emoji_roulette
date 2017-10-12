@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
-import { get, set, cloneDeep } from 'lodash';
+import { get, set, find, cloneDeep } from 'lodash';
 import cn from 'classnames';
 
 import { withBackend } from "./withBackend";
+const cities = [
+  {city: 'Sosnowiec', zipCode: '00-000'},
+  {city: 'Bielsko-Biała', zipCode: '43-300'},
+  {city: 'Cieszyn', zipCode: '43-430'},
+  {city: 'Czarnobyl', zipCode: '66-666'},
+];
 
 class RegisterForm extends Component {
   state = {
@@ -29,9 +35,11 @@ class RegisterForm extends Component {
   };
 
   handleChange = (event) => {
-    const newData = cloneDeep(this.state.data);
-    set(newData, event.target.name, event.target.value);
-    this.setState({ data: newData });
+    this.setState((currentState) => {
+      const newData = cloneDeep(currentState.data);
+      set(newData, event.target.name, event.target.value);
+      return { data: newData };
+    });
   };
 
   removeAddress = (index) => {
@@ -52,6 +60,13 @@ class RegisterForm extends Component {
       { city: '', zipCode: '' }
     ];
     this.setState({data: newData});
+  };
+
+  handleCityChange = ({target}, index) => {
+    this.handleChange({target});
+
+    const city = find(cities, {city: target.value}) || {};
+    this.handleChange({target: {value: city.zipCode, name: `addresses[${index}].zipCode`}})
   };
 
   validate = () => {
@@ -126,7 +141,7 @@ class RegisterForm extends Component {
                     className="form-control"
                     name={`addresses[${index}].city`}
                     value={address.city}
-                    onChange={this.handleChange}
+                    onChange={(event) => this.handleCityChange(event, index)}
                   >
                     <option value=""></option>
                     <option value="Sosnowiec">Sosnowiec</option>
