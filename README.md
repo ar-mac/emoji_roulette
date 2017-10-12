@@ -174,6 +174,7 @@
 * array of fields (you can add/remove them)
 * (extra) curated fragments from https://www.youtube.com/watch?v=-tDy7ds0dag
 * (extra) bootstrap https://bootstrapdocs.com/v3.3.6/docs/css/#overview
+* (extra) yup https://github.com/jquense/yup#stringlowercasemessage-string-schema
 
 -------------
 
