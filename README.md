@@ -97,9 +97,20 @@
 
 -------------
 
+### Done during CoderDojo at 12-Oct-2017
+
+#### Form Features
+* validation, and server validation
+* error handling
+* formatting
+* scoped fields (price range, disabling options depending on other input)
+* array of fields (you can add/remove them)
+
+#### Steps
+
 * Add form data structure matching `Form schema` below to `RegisterForm` state
 
-### Form schema
+##### Form schema
 * **age** **-** *presence, numericality* **-** if below 13 hides form
 * **username** **-** *presence length and regex (serverside already taken from the predefined list)*
 * **email** **-** *presence regex (serverside already taken from the predefined list)*
@@ -156,25 +167,20 @@
 * Bind fields city and zipCode together
   * Replace their city handleChange method with custom one
   * In this custom method trigger handleChange of zipCode field with appropriate value
-* Format zipCode field
-  * create method transforming zipCode in raw form into dashed form or in reverse depending on parameter
-  * bind transforming method with format flag to zipCode value
-  * before passing value to handleChange transform it with format flag off
 * Add validations
   * Make function `validate` return false if errors detected
   * Update `state.errors` with properly nested error objects according to specification
   * If no errors detected then return true
 
-
-##Features
-* validation, and server validation
-* error handling
-* formatting
-* scoped fields (price range, disabling options depending on other input)
-* array of fields (you can add/remove them)
-* (extra) curated fragments from https://www.youtube.com/watch?v=-tDy7ds0dag
+* (extra) fragments from https://www.youtube.com/watch?v=-tDy7ds0dag
 * (extra) bootstrap https://bootstrapdocs.com/v3.3.6/docs/css/#overview
-* (extra) yup https://github.com/jquense/yup#stringlowercasemessage-string-schema
+* (extra) yup https://github.com/jquense/yup
+
+#### Not implemented during workshops
+* Format zipCode field
+  * create method transforming zipCode in raw form into dashed form or in reverse depending on parameter
+  * bind transforming method with format flag to zipCode value
+  * before passing value to handleChange transform it with format flag off
 
 -------------
 
@@ -187,6 +193,9 @@
   * `setup` pattern
   * snapshot specs
   * tests for implementation
+  * async testing
+  * useful matchers (object)
+  * find and simulate event
 
 ### React Router
 
