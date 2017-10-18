@@ -184,18 +184,50 @@
 
 -------------
 
-## Topics
-* (extra) Use axios to make requests to external api
+### Done during CoderDojo at 2-Nov-2017
 
-### Testing with Jest
-* Jest specs
-  * enzyme
-  * `setup` pattern
-  * snapshot specs
-  * tests for implementation
-  * async testing
-  * useful matchers (object)
-  * find and simulate event
+#### Introduction
+* What is [Jest](http://facebook.github.io/jest/)
+* What is [Enzyme](http://airbnb.io/enzyme/)
+  * shallow vs mount
+  * lifecycleExperimental for shallow
+* Types of testing approaches
+  * Unit test for method
+  * User interaction test for method
+  * Snapshot test for markup & markup changes 
+* `setup` pattern and the steps leading to it
+
+#### Testing with Jest features
+* Things to test
+  * Markup and props (for snapshots)
+  * Regular component method
+  * Handler method triggered by user interaction
+  * Lifecycle method
+  * Asynchronous method
+  * Method which returns complex object (to use special matchers)
+  * Method conditionally calling function from props with attributes (to expect it being called with attributes)
+  * mock import
+
+#### Steps
+* snapshot specs
+  * markup in different conditions
+* tests for implementation
+  * all lifecycle methods 
+    * triggered naturally 
+    * triggered manually
+  * handler methods via find and simulate event
+    * `onClick` `onSubmit` event handlers
+  * all non handler methods in components (they are called by lifecycle, handlers, or child components)
+* async testing
+  * `handleSubmitByBackend` in `withBackend`
+* useful matchers (object)
+* mocking imports
+  * mock `twemoji.parse` method in `DisplayEmoji`
+  * mock `emojis` import in `Roulette`
+
+-------
+
+### React 16 differencies and new things
 
 ### React Router
 
@@ -203,3 +235,17 @@
   * Redux thunk
 
 ### Redux Form
+
+### Functional JS
+
+### React patterns
+
+### Web accessibility
+* Form handling
+* Image handling
+* Overall design
+  * Coloring 
+  * Sizes
+
+## Topics
+* (extra) Use axios to make requests to external api
