@@ -11,6 +11,9 @@ const cities = [
   { city: 'Bielsko-Biała', zipCode: '43-300' },
   { city: 'Cieszyn', zipCode: '43-430' },
   { city: 'Czarnobyl', zipCode: '66-666' },
+  { city: 'Berlin', zipCode: '30-821' },
+  { city: 'Praga', zipCode: '04-022' },
+  { city: 'Zylin', zipCode: '82-742' },
 ];
 
 class RegisterForm extends Component {
@@ -48,7 +51,7 @@ class RegisterForm extends Component {
     })
   };
 
-  handleChange = ({target}) => {
+  handleChange = ({ target }) => {
     this.setState((currentState) => {
       const newData = cloneDeep(currentState.data);
       set(newData, target.name, target.value);
@@ -102,6 +105,7 @@ class RegisterForm extends Component {
               type="number"
               className="form-control"
               name="age"
+              id="age"
               placeholder="Provide your age"
               value={data.age}
               onChange={this.handleChange}
@@ -118,6 +122,7 @@ class RegisterForm extends Component {
               type="text"
               className="form-control"
               name="username"
+              id="username"
               placeholder="Provide your username"
               value={data.username}
               onChange={this.handleChange}
@@ -134,6 +139,7 @@ class RegisterForm extends Component {
               type="email"
               className="form-control"
               name="email"
+              id="email"
               placeholder="Provide your email"
               value={data.email}
               onChange={this.handleChange}
@@ -143,9 +149,18 @@ class RegisterForm extends Component {
             }
           </div>
           {data.addresses.map((address, index) => (
-            <div className="panel panel-default" key={index}>
+            <div
+              className="panel panel-default" key={index}
+              role="group"
+              aria-labelledby={`panel-title-${index}`}
+            >
               <div className="panel-heading">
-                <h3 className="panel-title">address #{index + 1}</h3>
+                <h3
+                  className="panel-title"
+                  id={`panel-title-${index}`}
+                >
+                  address #{index + 1}
+                </h3>
                 <button onClick={() => this.removeAddress(index)}>Remove</button>
               </div>
               <div className="panel-body">
@@ -156,14 +171,22 @@ class RegisterForm extends Component {
                   <select
                     className="form-control"
                     name={`addresses[${index}].city`}
+                    id={`addresses[${index}].city`}
                     value={address.city}
                     onChange={(event) => this.handleCityChange(event, index)}
                   >
                     <option value=""></option>
-                    <option value="Sosnowiec">Sosnowiec</option>
-                    <option value="Bielsko-Biała">Bielsko-Biała</option>
-                    <option value="Cieszyn">Cieszyn</option>
-                    <option value="Czarnobyl">Czarnobyl</option>
+                    <optgroup label="Polska">
+                      <option value="Sosnowiec">Sosnowiec</option>
+                      <option value="Bielsko-Biała">Bielsko-Biała</option>
+                      <option value="Cieszyn">Cieszyn</option>
+                    </optgroup>
+                    <optgroup label="Europa">
+                      <option value="Czarnobyl">Czarnobyl</option>
+                      <option value="Berlin">Berlin</option>
+                      <option value="Praga">Praga</option>
+                      <option value="Zylin">Zylin</option>
+                    </optgroup>
                   </select>
                   {get(errors, `addresses[${index}].city`) &&
                   <span className="help-block">{errors.addresses[index].city}</span>
@@ -177,7 +200,10 @@ class RegisterForm extends Component {
                     type="text"
                     className="form-control"
                     name={`addresses[${index}].zipCode`}
+                    id={`addresses[${index}].zipCode`}
+                    aria-describedby="zipcode_format"
                     placeholder="Provide your zip-code"
+                    pattern="\d{2}-\d{3}"
                     value={address.zipCode}
                     onChange={this.handleChange}
                   />
@@ -188,6 +214,7 @@ class RegisterForm extends Component {
               </div>
             </div>
           ))}
+          <div className="visuallyhidden" id="zipcode_format">00-000</div>
           <div>
             <button onClick={this.addAddress}>Add new address</button>
           </div>
