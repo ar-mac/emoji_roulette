@@ -9,7 +9,8 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.11",
-    "twemoji": "^2.5.0"
+    "twemoji": "^2.5.0",
+    "yup": "^0.22.1"
   },
   "scripts": {
     "start": "react-scripts start",

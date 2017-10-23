@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import { isEmpty } from 'lodash';
 
-const userNames = ['user', 'user1', 'Bob', 'Me'];
+const usernames = ['user', 'user1', 'Bob', 'Me'];
 
 export const withBackend = (WrappedComponent) => {
   class WithBackend extends Component {
@@ -12,11 +12,11 @@ export const withBackend = (WrappedComponent) => {
           const errors = this.validateByBackend(formData);
 
           if (isEmpty(errors)) {
-            reject(errors);
-            this.props.handleSubmit(false);
-          } else {
             resolve();
             this.props.handleSubmit(true);
+          } else {
+            reject(errors);
+            this.props.handleSubmit(false);
           }
         }, 2000);
       })
@@ -24,11 +24,11 @@ export const withBackend = (WrappedComponent) => {
 
     validateByBackend = (formData) => {
       const errors = {};
-      if (!formData.userName) {
-        errors.userName = 'Is required';
+      if (!formData.username) {
+        errors.username = 'Is required';
       }
-      if (formData.userName && userNames.includes(formData.userName)) {
-        errors.userName = 'Is already taken';
+      if (formData.username && usernames.includes(formData.username)) {
+        errors.username = 'Is already taken';
       }
 
       return errors
