@@ -42,13 +42,12 @@ class RegisterForm extends Component {
   submit = (event) => {
     event.preventDefault();
 
-    this.validate(this.state.data).then(isValid => {
-      console.log(`isValid: `, isValid);
+    this.schema.validate(this.state.data).then(isValid => {
       if (isValid) {
         this.setState({ isSending: true });
         this.props.handleSubmit(this.state.data).catch(errors => this.setState({ errors }));
       }
-    })
+    }).catch(errors => this.setState({errors}))
   };
 
   handleChange = ({ target }) => {
@@ -86,10 +85,6 @@ class RegisterForm extends Component {
     if (city) {
       this.handleChange({ target: { value: city.zipCode, name: `addresses[${index}].zipCode` } })
     }
-  };
-
-  validate = () => {
-    return this.schema.isValid();
   };
 
   render() {
