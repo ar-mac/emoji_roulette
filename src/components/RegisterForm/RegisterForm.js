@@ -5,6 +5,7 @@ import cn from 'classnames';
 import yup from 'yup';
 
 import { withBackend } from "./withBackend";
+import { AddressFields } from "./AddressFields";
 
 const cities = [
   { city: 'Sosnowiec', zipCode: '00-000' },
@@ -16,7 +17,7 @@ const cities = [
   { city: 'Zylin', zipCode: '82-742' },
 ];
 
-class RegisterForm extends Component {
+export class RegisterForm extends Component {
   state = {
     data: {
       age: '',
@@ -29,6 +30,7 @@ class RegisterForm extends Component {
     errors: {},
     isSending: false,
   };
+
   schema = yup.object().shape({
     age: yup.string().required(),
     username: yup.string().required().min(3).max(50),
@@ -42,12 +44,15 @@ class RegisterForm extends Component {
   submit = (event) => {
     event.preventDefault();
 
-    this.schema.validate(this.state.data).then(isValid => {
-      if (isValid) {
-        this.setState({ isSending: true });
-        this.props.handleSubmit(this.state.data).catch(errors => this.setState({ errors }));
-      }
-    }).catch(errors => this.setState({errors}))
+    const { data } = this.state;
+    this.schema.validate(data)
+      .then(isValid => {
+        if (isValid) {
+          this.setState({ isSending: true });
+          this.props.handleSubmit(data).catch(errors => this.setState({ errors }));
+        }
+      })
+      .catch(errors => this.setState({ errors }))
   };
 
   handleChange = ({ target }) => {
@@ -58,27 +63,35 @@ class RegisterForm extends Component {
     });
   };
 
-  removeAddress = (index) => {
-    const { addresses } = this.state.data;
-    const newData = cloneDeep(this.state.data);
-    newData.addresses = [
-      ...addresses.slice(0, index),
-      ...addresses.slice(index + 1),
-    ];
+  removeAddress = (index) => () => {
+    const { data } = this.state;
+
+    const newData = {
+      ...data,
+      addresses: [
+        ...data.addresses.slice(0, index),
+        ...data.addresses.slice(index + 1),
+      ]
+    };
 
     this.setState({ data: newData });
   };
 
   addAddress = () => {
-    const newData = cloneDeep(this.state.data);
-    newData.addresses = [
-      ...newData.addresses,
-      { city: '', zipCode: '' }
-    ];
+    const { data } = this.state;
+
+    const newData = {
+      ...data,
+      addresses: [
+        ...data.addresses,
+        { city: '', zipCode: '' },
+      ]
+    };
+
     this.setState({ data: newData });
   };
 
-  handleCityChange = (event, index) => {
+  handleCityChange = (index) => (event) => {
     this.handleChange(event);
 
     const city = find(cities, { city: event.target.value });
@@ -144,72 +157,15 @@ class RegisterForm extends Component {
             }
           </div>
           {data.addresses.map((address, index) => (
-            <div
-              className="panel panel-default" key={index}
-              role="group"
-              aria-labelledby={`panel-title-${index}`}
-            >
-              <div className="panel-heading">
-                <h3
-                  className="panel-title"
-                  id={`panel-title-${index}`}
-                >
-                  address #{index + 1}
-                </h3>
-                <button onClick={() => this.removeAddress(index)}>Remove</button>
-              </div>
-              <div className="panel-body">
-                <div className={cn('form-group', {
-                  'has-error': get(errors, `addresses[${index}].city`)
-                })}>
-                  <label htmlFor={`addresses[${index}].city`}>city</label>
-                  <select
-                    className="form-control"
-                    name={`addresses[${index}].city`}
-                    id={`addresses[${index}].city`}
-                    value={address.city}
-                    onChange={(event) => this.handleCityChange(event, index)}
-                  >
-                    <option value=""></option>
-                    <optgroup label="Polska">
-                      <option value="Sosnowiec">Sosnowiec</option>
-                      <option value="Bielsko-Biała">Bielsko-Biała</option>
-                      <option value="Cieszyn">Cieszyn</option>
-                    </optgroup>
-                    <optgroup label="Europa">
-                      <option value="Czarnobyl">Czarnobyl</option>
-                      <option value="Berlin">Berlin</option>
-                      <option value="Praga">Praga</option>
-                      <option value="Zylin">Zylin</option>
-                    </optgroup>
-                  </select>
-                  {get(errors, `addresses[${index}].city`) &&
-                  <span className="help-block">{errors.addresses[index].city}</span>
-                  }
-                </div>
-                <div className={cn('form-group', {
-                  'has-error': get(errors, `addresses[${index}].zipCode`)
-                })}>
-                  <label htmlFor={`addresses[${index}].zipCode`}>zip-code</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    name={`addresses[${index}].zipCode`}
-                    id={`addresses[${index}].zipCode`}
-                    aria-describedby="zipcode_format"
-                    placeholder="Provide your zip-code"
-                    pattern="\d{2}-\d{3}"
-                    value={address.zipCode}
-                    onChange={this.handleChange}
-                  />
-                  {get(errors, `addresses[${index}].zipCode`) &&
-                  <span className="help-block">{errors.addresses[index].zipCode}</span>
-                  }
-                </div>
-              </div>
-            </div>
+            <AddressFields
+              address={address}
+              index={index}
+              errors={errors}
+              removeAddress={this.removeAddress(index)}
+              handleCityChange={this.handleCityChange(index)}
+              handleChange={this.handleChange}
+            />
           ))}
-          <div className="visuallyhidden" id="zipcode_format">00-000</div>
           <div>
             <button onClick={this.addAddress}>Add new address</button>
           </div>
@@ -224,7 +180,6 @@ class RegisterForm extends Component {
   }
 }
 
-RegisterForm.displayName = 'RegisterForm';
 RegisterForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
 };
