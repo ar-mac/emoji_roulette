@@ -184,7 +184,7 @@
 
 -------------
 
-### Done during CoderDojo at 2-Nov-2017
+### Done during CoderDojo at 23-Nov-2017
 
 #### Introduction
 * What is [Jest](http://facebook.github.io/jest/)
