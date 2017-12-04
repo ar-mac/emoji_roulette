@@ -31,6 +31,9 @@ export class DisplayEmoji extends Component {
 
 DisplayEmoji.propTypes = {
   index: PropTypes.number.isRequired,
+  clearIndex: PropTypes.func,
+  secondsPassed: PropTypes.number,
+  emoji: PropTypes.object,
 };
 
 export default withTimer(DisplayEmoji);
