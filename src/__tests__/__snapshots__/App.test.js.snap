@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> renders 1`] = `
+exports[`<App /> rendering renders form component when not isRegistered 1`] = `
 App {
   "_reactInternalInstance": ShallowComponentWrapper {
     "_calledComponentWillUnmount": false,
@@ -24,9 +24,7 @@ App {
         <h2>
                 Welcome to Super Emoji Routlette
         </h2>
-        <withBackend(Component)
-                handleSubmit={[Function]}
-        />
+        <Roulette />
 </div>,
       "_debugID": 2,
       "_renderedOutput": <div
@@ -35,9 +33,7 @@ App {
         <h2>
                 Welcome to Super Emoji Routlette
         </h2>
-        <withBackend(Component)
-                handleSubmit={[Function]}
-        />
+        <Roulette />
 </div>,
     },
     "_renderedNodeType": 0,
@@ -51,7 +47,7 @@ App {
   "refs": Object {},
   "setRegistrationStatus": [Function],
   "state": Object {
-    "isRegistered": false,
+    "isRegistered": true,
   },
   "updater": Object {
     "enqueueCallback": [Function],
@@ -66,7 +62,7 @@ App {
 }
 `;
 
-exports[`<App /> renders roulette component when isRegistered 1`] = `
+exports[`<App /> rendering renders roulette component when isRegistered 1`] = `
 App {
   "_reactInternalInstance": ShallowComponentWrapper {
     "_calledComponentWillUnmount": false,

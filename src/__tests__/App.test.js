@@ -6,14 +6,16 @@ describe('<App />', () => {
 
   const setup = buildSetup(App, defaultProps, { lifecycleExperimental: true });
 
-  test('renders', () => {
-    expect(setup().wrapper.instance()).toMatchSnapshot();
-  });
+  describe('rendering', () => {
+    test('renders form component when not isRegistered', () => {
+      expect(setup().wrapper.instance()).toMatchSnapshot();
+    });
 
-  test('renders roulette component when isRegistered', () => {
-    const { wrapper } = setup();
-    wrapper.setState({ isRegistered: true });
-    expect(wrapper.instance()).toMatchSnapshot();
+    test('renders roulette component when isRegistered', () => {
+      const { wrapper } = setup();
+      wrapper.setState({ isRegistered: true });
+      expect(wrapper.instance()).toMatchSnapshot();
+    });
   });
 
   test('setRegistrationStatus sets isRegistered state to provided value', () => {
