@@ -1,5 +1,463 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`RegisterForm renders multiple addresses 1`] = `
+RegisterForm {
+  "_reactInternalInstance": ShallowComponentWrapper {
+    "_calledComponentWillUnmount": false,
+    "_compositeType": 0,
+    "_context": Object {},
+    "_currentElement": <RegisterForm
+      handleSubmit={[Function]}
+/>,
+    "_debugID": 3,
+    "_hostContainerInfo": null,
+    "_hostParent": null,
+    "_instance": [Circular],
+    "_mountOrder": 2,
+    "_pendingCallbacks": null,
+    "_pendingElement": null,
+    "_pendingForceUpdate": false,
+    "_pendingReplaceState": false,
+    "_pendingStateQueue": null,
+    "_renderedComponent": NoopInternalComponent {
+      "_currentElement": <div
+        className="register-form row col-md-6 col-md-offset-3"
+>
+        <form
+                onSubmit={[Function]}
+        >
+                <div
+                        className="form-group"
+                >
+                        <label
+                                htmlFor="age"
+                        >
+                                age
+                        </label>
+                        <input
+                                className="form-control"
+                                id="age"
+                                name="age"
+                                onChange={[Function]}
+                                placeholder="Provide your age"
+                                type="number"
+                                value=""
+                        />
+                </div>
+                <div
+                        className="form-group"
+                >
+                        <label
+                                htmlFor="username"
+                        >
+                                username
+                        </label>
+                        <input
+                                className="form-control"
+                                id="username"
+                                name="username"
+                                onChange={[Function]}
+                                placeholder="Provide your username"
+                                type="text"
+                                value=""
+                        />
+                </div>
+                <div
+                        className="form-group"
+                >
+                        <label
+                                htmlFor="email"
+                        >
+                                email
+                        </label>
+                        <input
+                                className="form-control"
+                                id="email"
+                                name="email"
+                                onChange={[Function]}
+                                placeholder="Provide your email"
+                                type="email"
+                                value=""
+                        />
+                </div>
+                <AddressFields
+                        address={
+                                Object {
+                                        "city": "city1",
+                                        "zipCode": "01-001",
+                                      }
+                        }
+                        errors={Object {}}
+                        handleChange={[Function]}
+                        handleCityChange={[Function]}
+                        index={0}
+                        removeAddress={[Function]}
+                />
+                <AddressFields
+                        address={
+                                Object {
+                                        "city": "city2",
+                                        "zipCode": "07-007",
+                                      }
+                        }
+                        errors={Object {}}
+                        handleChange={[Function]}
+                        handleCityChange={[Function]}
+                        index={1}
+                        removeAddress={[Function]}
+                />
+                <div>
+                        <button
+                                onClick={[Function]}
+                        >
+                                Add new address
+                        </button>
+                </div>
+                <br />
+                ᕙ(◔◡◔)ᕗ
+                <div>
+                        <button>
+                                Submit form
+                        </button>
+                </div>
+        </form>
+</div>,
+      "_debugID": 4,
+      "_renderedOutput": <div
+        className="register-form row col-md-6 col-md-offset-3"
+>
+        <form
+                onSubmit={[Function]}
+        >
+                <div
+                        className="form-group"
+                >
+                        <label
+                                htmlFor="age"
+                        >
+                                age
+                        </label>
+                        <input
+                                className="form-control"
+                                id="age"
+                                name="age"
+                                onChange={[Function]}
+                                placeholder="Provide your age"
+                                type="number"
+                                value=""
+                        />
+                </div>
+                <div
+                        className="form-group"
+                >
+                        <label
+                                htmlFor="username"
+                        >
+                                username
+                        </label>
+                        <input
+                                className="form-control"
+                                id="username"
+                                name="username"
+                                onChange={[Function]}
+                                placeholder="Provide your username"
+                                type="text"
+                                value=""
+                        />
+                </div>
+                <div
+                        className="form-group"
+                >
+                        <label
+                                htmlFor="email"
+                        >
+                                email
+                        </label>
+                        <input
+                                className="form-control"
+                                id="email"
+                                name="email"
+                                onChange={[Function]}
+                                placeholder="Provide your email"
+                                type="email"
+                                value=""
+                        />
+                </div>
+                <AddressFields
+                        address={
+                                Object {
+                                        "city": "city1",
+                                        "zipCode": "01-001",
+                                      }
+                        }
+                        errors={Object {}}
+                        handleChange={[Function]}
+                        handleCityChange={[Function]}
+                        index={0}
+                        removeAddress={[Function]}
+                />
+                <AddressFields
+                        address={
+                                Object {
+                                        "city": "city2",
+                                        "zipCode": "07-007",
+                                      }
+                        }
+                        errors={Object {}}
+                        handleChange={[Function]}
+                        handleCityChange={[Function]}
+                        index={1}
+                        removeAddress={[Function]}
+                />
+                <div>
+                        <button
+                                onClick={[Function]}
+                        >
+                                Add new address
+                        </button>
+                </div>
+                <br />
+                ᕙ(◔◡◔)ᕗ
+                <div>
+                        <button>
+                                Submit form
+                        </button>
+                </div>
+        </form>
+</div>,
+    },
+    "_renderedNodeType": 0,
+    "_rootNodeID": 0,
+    "_topLevelWrapper": null,
+    "_updateBatchNumber": null,
+    "_warnedAboutRefsInRender": false,
+  },
+  "addAddress": [Function],
+  "context": Object {},
+  "handleChange": [Function],
+  "handleCityChange": [Function],
+  "props": Object {
+    "handleSubmit": [Function],
+  },
+  "refs": Object {},
+  "removeAddress": [Function],
+  "schema": ObjectSchema {
+    "_blacklist": Set {},
+    "_conditions": Array [],
+    "_defaultDefault": [Function],
+    "_deps": Array [],
+    "_excludedEdges": Array [
+      "undefined-undefined",
+    ],
+    "_exclusive": Object {},
+    "_mutate": false,
+    "_nodes": Array [
+      "addresses",
+      "email",
+      "username",
+      "age",
+    ],
+    "_options": Object {
+      "abortEarly": true,
+      "recursive": true,
+    },
+    "_type": "object",
+    "_typeError": [Function],
+    "_whitelist": Set {},
+    "fields": Object {
+      "addresses": ArraySchema {
+        "_blacklist": Set {},
+        "_conditions": Array [],
+        "_deps": Array [],
+        "_exclusive": Object {},
+        "_mutate": false,
+        "_options": Object {
+          "abortEarly": true,
+          "recursive": true,
+        },
+        "_subType": ObjectSchema {
+          "_blacklist": Set {},
+          "_conditions": Array [],
+          "_defaultDefault": [Function],
+          "_deps": Array [],
+          "_excludedEdges": Array [
+            "undefined-undefined",
+          ],
+          "_exclusive": Object {},
+          "_mutate": false,
+          "_nodes": Array [
+            "zipCode",
+            "city",
+          ],
+          "_options": Object {
+            "abortEarly": true,
+            "recursive": true,
+          },
+          "_type": "object",
+          "_typeError": [Function],
+          "_whitelist": Set {},
+          "fields": Object {
+            "city": StringSchema {
+              "_blacklist": Set {},
+              "_conditions": Array [],
+              "_deps": Array [],
+              "_exclusive": Object {},
+              "_mutate": false,
+              "_options": Object {
+                "abortEarly": true,
+                "recursive": true,
+              },
+              "_type": "string",
+              "_typeError": [Function],
+              "_whitelist": Set {},
+              "tests": Array [],
+              "transforms": Array [
+                [Function],
+              ],
+            },
+            "zipCode": StringSchema {
+              "_blacklist": Set {},
+              "_conditions": Array [],
+              "_deps": Array [],
+              "_exclusive": Object {},
+              "_mutate": false,
+              "_options": Object {
+                "abortEarly": true,
+                "recursive": true,
+              },
+              "_type": "string",
+              "_typeError": [Function],
+              "_whitelist": Set {},
+              "tests": Array [],
+              "transforms": Array [
+                [Function],
+              ],
+            },
+          },
+          "tests": Array [],
+          "transforms": Array [
+            [Function],
+          ],
+        },
+        "_type": "array",
+        "_typeError": [Function],
+        "_whitelist": Set {},
+        "tests": Array [],
+        "transforms": Array [
+          [Function],
+        ],
+      },
+      "age": StringSchema {
+        "_blacklist": Set {},
+        "_conditions": Array [],
+        "_deps": Array [],
+        "_exclusive": Object {
+          "required": false,
+        },
+        "_mutate": false,
+        "_options": Object {
+          "abortEarly": true,
+          "recursive": true,
+        },
+        "_type": "string",
+        "_typeError": [Function],
+        "_whitelist": Set {},
+        "tests": Array [
+          [Function],
+          [Function],
+        ],
+        "transforms": Array [
+          [Function],
+        ],
+      },
+      "email": StringSchema {
+        "_blacklist": Set {},
+        "_conditions": Array [],
+        "_deps": Array [],
+        "_exclusive": Object {
+          "undefined": false,
+        },
+        "_mutate": false,
+        "_options": Object {
+          "abortEarly": true,
+          "recursive": true,
+        },
+        "_type": "string",
+        "_typeError": [Function],
+        "_whitelist": Set {},
+        "tests": Array [
+          [Function],
+        ],
+        "transforms": Array [
+          [Function],
+        ],
+      },
+      "username": StringSchema {
+        "_blacklist": Set {},
+        "_conditions": Array [],
+        "_deps": Array [],
+        "_exclusive": Object {
+          "max": true,
+          "min": true,
+          "required": false,
+        },
+        "_mutate": false,
+        "_options": Object {
+          "abortEarly": true,
+          "recursive": true,
+        },
+        "_type": "string",
+        "_typeError": [Function],
+        "_whitelist": Set {},
+        "tests": Array [
+          [Function],
+          [Function],
+          [Function],
+          [Function],
+        ],
+        "transforms": Array [
+          [Function],
+        ],
+      },
+    },
+    "tests": Array [],
+    "transforms": Array [
+      [Function],
+    ],
+  },
+  "state": Object {
+    "data": Object {
+      "addresses": Array [
+        Object {
+          "city": "city1",
+          "zipCode": "01-001",
+        },
+        Object {
+          "city": "city2",
+          "zipCode": "07-007",
+        },
+      ],
+      "age": "",
+      "email": "",
+      "username": "",
+    },
+    "errors": Object {},
+    "isSending": false,
+  },
+  "submit": [Function],
+  "updater": Object {
+    "enqueueCallback": [Function],
+    "enqueueCallbackInternal": [Function],
+    "enqueueElementInternal": [Function],
+    "enqueueForceUpdate": [Function],
+    "enqueueReplaceState": [Function],
+    "enqueueSetState": [Function],
+    "isMounted": [Function],
+    "validateCallback": [Function],
+  },
+}
+`;
+
 exports[`RegisterForm renders with default props 1`] = `
 ShallowWrapper {
   "length": 1,
