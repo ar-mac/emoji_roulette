@@ -30,6 +30,9 @@ describe('RegisterForm', () => {
         isSending: false,
       }
     };
+
+    wrapper.setState(state);
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('renders multiple addresses', () => {
@@ -41,6 +44,6 @@ describe('RegisterForm', () => {
     const initialState = wrapper.state();
     initialState.data.addresses = addresses;
     wrapper.setState(initialState);
-    expect(wrapper.instance()).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });

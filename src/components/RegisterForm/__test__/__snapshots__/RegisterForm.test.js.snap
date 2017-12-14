@@ -1,6 +1,113 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RegisterForm renders multiple addresses 1`] = `
+<div
+  className="register-form row col-md-6 col-md-offset-3"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="age"
+      >
+        age
+      </label>
+      <input
+        className="form-control"
+        id="age"
+        name="age"
+        onChange={[Function]}
+        placeholder="Provide your age"
+        type="number"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="username"
+      >
+        username
+      </label>
+      <input
+        className="form-control"
+        id="username"
+        name="username"
+        onChange={[Function]}
+        placeholder="Provide your username"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="email"
+      >
+        email
+      </label>
+      <input
+        className="form-control"
+        id="email"
+        name="email"
+        onChange={[Function]}
+        placeholder="Provide your email"
+        type="email"
+        value=""
+      />
+    </div>
+    <AddressFields
+      address={
+        Object {
+          "city": "city1",
+          "zipCode": "01-001",
+        }
+      }
+      errors={Object {}}
+      handleChange={[Function]}
+      handleCityChange={[Function]}
+      index={0}
+      key="0"
+      removeAddress={[Function]}
+    />
+    <AddressFields
+      address={
+        Object {
+          "city": "city2",
+          "zipCode": "07-007",
+        }
+      }
+      errors={Object {}}
+      handleChange={[Function]}
+      handleCityChange={[Function]}
+      index={1}
+      key="1"
+      removeAddress={[Function]}
+    />
+    <div>
+      <button
+        onClick={[Function]}
+      >
+        Add new address
+      </button>
+    </div>
+    <br />
+    ᕙ(◔◡◔)ᕗ
+    <div>
+      <button>
+        Submit form
+      </button>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`RegisterForm renders whole state correctly 1`] = `
 RegisterForm {
   "_reactInternalInstance": ShallowComponentWrapper {
     "_calledComponentWillUnmount": false,
@@ -41,7 +148,7 @@ RegisterForm {
                                 onChange={[Function]}
                                 placeholder="Provide your age"
                                 type="number"
-                                value=""
+                                value="45"
                         />
                 </div>
                 <div
@@ -59,7 +166,7 @@ RegisterForm {
                                 onChange={[Function]}
                                 placeholder="Provide your username"
                                 type="text"
-                                value=""
+                                value="user1"
                         />
                 </div>
                 <div
@@ -77,7 +184,7 @@ RegisterForm {
                                 onChange={[Function]}
                                 placeholder="Provide your email"
                                 type="email"
-                                value=""
+                                value="some failing"
                         />
                 </div>
                 <AddressFields
@@ -144,7 +251,7 @@ RegisterForm {
                                 onChange={[Function]}
                                 placeholder="Provide your age"
                                 type="number"
-                                value=""
+                                value="45"
                         />
                 </div>
                 <div
@@ -162,7 +269,7 @@ RegisterForm {
                                 onChange={[Function]}
                                 placeholder="Provide your username"
                                 type="text"
-                                value=""
+                                value="user1"
                         />
                 </div>
                 <div
@@ -180,7 +287,7 @@ RegisterForm {
                                 onChange={[Function]}
                                 placeholder="Provide your email"
                                 type="email"
-                                value=""
+                                value="some failing"
                         />
                 </div>
                 <AddressFields
@@ -437,9 +544,13 @@ RegisterForm {
           "zipCode": "07-007",
         },
       ],
-      "age": "",
-      "email": "",
-      "username": "",
+      "age": "45",
+      "email": "some failing",
+      "errors": Object {
+        "email": "is not correct",
+      },
+      "isSending": false,
+      "username": "user1",
     },
     "errors": Object {},
     "isSending": false,
@@ -459,921 +570,94 @@ RegisterForm {
 `;
 
 exports[`RegisterForm renders with default props 1`] = `
-ShallowWrapper {
-  "length": 1,
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <RegisterForm
-    handleSubmit={[Function]}
-/>,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": null,
-    "nodeType": "host",
-    "props": Object {
-      "children": <form
-        onSubmit={[Function]}
+<div
+  className="register-form row col-md-6 col-md-offset-3"
 >
-        <div
-                className="form-group"
-        >
-                <label
-                        htmlFor="age"
-                >
-                        age
-                </label>
-                <input
-                        className="form-control"
-                        id="age"
-                        name="age"
-                        onChange={[Function]}
-                        placeholder="Provide your age"
-                        type="number"
-                        value=""
-                />
-        </div>
-        <div
-                className="form-group"
-        >
-                <label
-                        htmlFor="username"
-                >
-                        username
-                </label>
-                <input
-                        className="form-control"
-                        id="username"
-                        name="username"
-                        onChange={[Function]}
-                        placeholder="Provide your username"
-                        type="text"
-                        value=""
-                />
-        </div>
-        <div
-                className="form-group"
-        >
-                <label
-                        htmlFor="email"
-                >
-                        email
-                </label>
-                <input
-                        className="form-control"
-                        id="email"
-                        name="email"
-                        onChange={[Function]}
-                        placeholder="Provide your email"
-                        type="email"
-                        value=""
-                />
-        </div>
-        <AddressFields
-                address={
-                        Object {
-                                "city": "",
-                                "zipCode": "",
-                              }
-                }
-                errors={Object {}}
-                handleChange={[Function]}
-                handleCityChange={[Function]}
-                index={0}
-                removeAddress={[Function]}
-        />
-        <div>
-                <button
-                        onClick={[Function]}
-                >
-                        Add new address
-                </button>
-        </div>
-        <br />
-        ᕙ(◔◡◔)ᕗ
-        <div>
-                <button>
-                        Submit form
-                </button>
-        </div>
-</form>,
-      "className": "register-form row col-md-6 col-md-offset-3",
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": null,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <div
-            className="form-group"
->
-            <label
-                        htmlFor="age"
-            >
-                        age
-            </label>
-            <input
-                        className="form-control"
-                        id="age"
-                        name="age"
-                        onChange={[Function]}
-                        placeholder="Provide your age"
-                        type="number"
-                        value=""
-            />
-</div>,
-          <div
-            className="form-group"
->
-            <label
-                        htmlFor="username"
-            >
-                        username
-            </label>
-            <input
-                        className="form-control"
-                        id="username"
-                        name="username"
-                        onChange={[Function]}
-                        placeholder="Provide your username"
-                        type="text"
-                        value=""
-            />
-</div>,
-          <div
-            className="form-group"
->
-            <label
-                        htmlFor="email"
-            >
-                        email
-            </label>
-            <input
-                        className="form-control"
-                        id="email"
-                        name="email"
-                        onChange={[Function]}
-                        placeholder="Provide your email"
-                        type="email"
-                        value=""
-            />
-</div>,
-          Array [
-            <AddressFields
-              address={
-                            Object {
-                                          "city": "",
-                                          "zipCode": "",
-                                        }
-              }
-              errors={Object {}}
-              handleChange={[Function]}
-              handleCityChange={[Function]}
-              index={0}
-              removeAddress={[Function]}
-/>,
-          ],
-          <div>
-            <button
-                        onClick={[Function]}
-            >
-                        Add new address
-            </button>
-</div>,
-          <br />,
-          "ᕙ(◔◡◔)ᕗ",
-          <div>
-            <button>
-                        Submit form
-            </button>
-</div>,
-        ],
-        "onSubmit": [Function],
-      },
-      "ref": null,
-      "rendered": Array [
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="age"
+      >
+        age
+      </label>
+      <input
+        className="form-control"
+        id="age"
+        name="age"
+        onChange={[Function]}
+        placeholder="Provide your age"
+        type="number"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="username"
+      >
+        username
+      </label>
+      <input
+        className="form-control"
+        id="username"
+        name="username"
+        onChange={[Function]}
+        placeholder="Provide your username"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="email"
+      >
+        email
+      </label>
+      <input
+        className="form-control"
+        id="email"
+        name="email"
+        onChange={[Function]}
+        placeholder="Provide your email"
+        type="email"
+        value=""
+      />
+    </div>
+    <AddressFields
+      address={
         Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <label
-                htmlFor="age"
->
-                age
-</label>,
-              <input
-                className="form-control"
-                id="age"
-                name="age"
-                onChange={[Function]}
-                placeholder="Provide your age"
-                type="number"
-                value=""
-/>,
-              undefined,
-            ],
-            "className": "form-group",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "host",
-              "props": Object {
-                "children": "age",
-                "htmlFor": "age",
-              },
-              "ref": null,
-              "rendered": "age",
-              "type": "label",
-            },
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "host",
-              "props": Object {
-                "className": "form-control",
-                "id": "age",
-                "name": "age",
-                "onChange": [Function],
-                "placeholder": "Provide your age",
-                "type": "number",
-                "value": "",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "input",
-            },
-            undefined,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <label
-                htmlFor="username"
->
-                username
-</label>,
-              <input
-                className="form-control"
-                id="username"
-                name="username"
-                onChange={[Function]}
-                placeholder="Provide your username"
-                type="text"
-                value=""
-/>,
-              undefined,
-            ],
-            "className": "form-group",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "host",
-              "props": Object {
-                "children": "username",
-                "htmlFor": "username",
-              },
-              "ref": null,
-              "rendered": "username",
-              "type": "label",
-            },
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "host",
-              "props": Object {
-                "className": "form-control",
-                "id": "username",
-                "name": "username",
-                "onChange": [Function],
-                "placeholder": "Provide your username",
-                "type": "text",
-                "value": "",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "input",
-            },
-            undefined,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <label
-                htmlFor="email"
->
-                email
-</label>,
-              <input
-                className="form-control"
-                id="email"
-                name="email"
-                onChange={[Function]}
-                placeholder="Provide your email"
-                type="email"
-                value=""
-/>,
-              undefined,
-            ],
-            "className": "form-group",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "host",
-              "props": Object {
-                "children": "email",
-                "htmlFor": "email",
-              },
-              "ref": null,
-              "rendered": "email",
-              "type": "label",
-            },
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "host",
-              "props": Object {
-                "className": "form-control",
-                "id": "email",
-                "name": "email",
-                "onChange": [Function],
-                "placeholder": "Provide your email",
-                "type": "email",
-                "value": "",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "input",
-            },
-            undefined,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "0",
-          "nodeType": "class",
-          "props": Object {
-            "address": Object {
-              "city": "",
-              "zipCode": "",
-            },
-            "errors": Object {},
-            "handleChange": [Function],
-            "handleCityChange": [Function],
-            "index": 0,
-            "removeAddress": [Function],
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "host",
-          "props": Object {
-            "children": <button
-              onClick={[Function]}
->
-              Add new address
-</button>,
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "host",
-            "props": Object {
-              "children": "Add new address",
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": "Add new address",
-            "type": "button",
-          },
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "host",
-          "props": Object {},
-          "ref": null,
-          "rendered": null,
-          "type": "br",
-        },
-        "ᕙ(◔◡◔)ᕗ",
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "host",
-          "props": Object {
-            "children": <button>
-              Submit form
-</button>,
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "host",
-            "props": Object {
-              "children": "Submit form",
-            },
-            "ref": null,
-            "rendered": "Submit form",
-            "type": "button",
-          },
-          "type": "div",
-        },
-      ],
-      "type": "form",
-    },
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": null,
-      "nodeType": "host",
-      "props": Object {
-        "children": <form
-          onSubmit={[Function]}
->
-          <div
-                    className="form-group"
-          >
-                    <label
-                              htmlFor="age"
-                    >
-                              age
-                    </label>
-                    <input
-                              className="form-control"
-                              id="age"
-                              name="age"
-                              onChange={[Function]}
-                              placeholder="Provide your age"
-                              type="number"
-                              value=""
-                    />
-          </div>
-          <div
-                    className="form-group"
-          >
-                    <label
-                              htmlFor="username"
-                    >
-                              username
-                    </label>
-                    <input
-                              className="form-control"
-                              id="username"
-                              name="username"
-                              onChange={[Function]}
-                              placeholder="Provide your username"
-                              type="text"
-                              value=""
-                    />
-          </div>
-          <div
-                    className="form-group"
-          >
-                    <label
-                              htmlFor="email"
-                    >
-                              email
-                    </label>
-                    <input
-                              className="form-control"
-                              id="email"
-                              name="email"
-                              onChange={[Function]}
-                              placeholder="Provide your email"
-                              type="email"
-                              value=""
-                    />
-          </div>
-          <AddressFields
-                    address={
-                              Object {
-                                        "city": "",
-                                        "zipCode": "",
-                                      }
-                    }
-                    errors={Object {}}
-                    handleChange={[Function]}
-                    handleCityChange={[Function]}
-                    index={0}
-                    removeAddress={[Function]}
-          />
-          <div>
-                    <button
-                              onClick={[Function]}
-                    >
-                              Add new address
-                    </button>
-          </div>
-          <br />
-          ᕙ(◔◡◔)ᕗ
-          <div>
-                    <button>
-                              Submit form
-                    </button>
-          </div>
-</form>,
-        "className": "register-form row col-md-6 col-md-offset-3",
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <div
-              className="form-group"
->
-              <label
-                            htmlFor="age"
-              >
-                            age
-              </label>
-              <input
-                            className="form-control"
-                            id="age"
-                            name="age"
-                            onChange={[Function]}
-                            placeholder="Provide your age"
-                            type="number"
-                            value=""
-              />
-</div>,
-            <div
-              className="form-group"
->
-              <label
-                            htmlFor="username"
-              >
-                            username
-              </label>
-              <input
-                            className="form-control"
-                            id="username"
-                            name="username"
-                            onChange={[Function]}
-                            placeholder="Provide your username"
-                            type="text"
-                            value=""
-              />
-</div>,
-            <div
-              className="form-group"
->
-              <label
-                            htmlFor="email"
-              >
-                            email
-              </label>
-              <input
-                            className="form-control"
-                            id="email"
-                            name="email"
-                            onChange={[Function]}
-                            placeholder="Provide your email"
-                            type="email"
-                            value=""
-              />
-</div>,
-            Array [
-              <AddressFields
-                address={
-                                Object {
-                                                "city": "",
-                                                "zipCode": "",
-                                              }
-                }
-                errors={Object {}}
-                handleChange={[Function]}
-                handleCityChange={[Function]}
-                index={0}
-                removeAddress={[Function]}
-/>,
-            ],
-            <div>
-              <button
-                            onClick={[Function]}
-              >
-                            Add new address
-              </button>
-</div>,
-            <br />,
-            "ᕙ(◔◡◔)ᕗ",
-            <div>
-              <button>
-                            Submit form
-              </button>
-</div>,
-          ],
-          "onSubmit": [Function],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <label
-                  htmlFor="age"
->
-                  age
-</label>,
-                <input
-                  className="form-control"
-                  id="age"
-                  name="age"
-                  onChange={[Function]}
-                  placeholder="Provide your age"
-                  type="number"
-                  value=""
-/>,
-                undefined,
-              ],
-              "className": "form-group",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "age",
-                  "htmlFor": "age",
-                },
-                "ref": null,
-                "rendered": "age",
-                "type": "label",
-              },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "className": "form-control",
-                  "id": "age",
-                  "name": "age",
-                  "onChange": [Function],
-                  "placeholder": "Provide your age",
-                  "type": "number",
-                  "value": "",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "input",
-              },
-              undefined,
-            ],
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <label
-                  htmlFor="username"
->
-                  username
-</label>,
-                <input
-                  className="form-control"
-                  id="username"
-                  name="username"
-                  onChange={[Function]}
-                  placeholder="Provide your username"
-                  type="text"
-                  value=""
-/>,
-                undefined,
-              ],
-              "className": "form-group",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "username",
-                  "htmlFor": "username",
-                },
-                "ref": null,
-                "rendered": "username",
-                "type": "label",
-              },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "className": "form-control",
-                  "id": "username",
-                  "name": "username",
-                  "onChange": [Function],
-                  "placeholder": "Provide your username",
-                  "type": "text",
-                  "value": "",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "input",
-              },
-              undefined,
-            ],
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <label
-                  htmlFor="email"
->
-                  email
-</label>,
-                <input
-                  className="form-control"
-                  id="email"
-                  name="email"
-                  onChange={[Function]}
-                  placeholder="Provide your email"
-                  type="email"
-                  value=""
-/>,
-                undefined,
-              ],
-              "className": "form-group",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "email",
-                  "htmlFor": "email",
-                },
-                "ref": null,
-                "rendered": "email",
-                "type": "label",
-              },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "className": "form-control",
-                  "id": "email",
-                  "name": "email",
-                  "onChange": [Function],
-                  "placeholder": "Provide your email",
-                  "type": "email",
-                  "value": "",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "input",
-              },
-              undefined,
-            ],
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": "0",
-            "nodeType": "class",
-            "props": Object {
-              "address": Object {
-                "city": "",
-                "zipCode": "",
-              },
-              "errors": Object {},
-              "handleChange": [Function],
-              "handleCityChange": [Function],
-              "index": 0,
-              "removeAddress": [Function],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "host",
-            "props": Object {
-              "children": <button
-                onClick={[Function]}
->
-                Add new address
-</button>,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "host",
-              "props": Object {
-                "children": "Add new address",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": "Add new address",
-              "type": "button",
-            },
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "host",
-            "props": Object {},
-            "ref": null,
-            "rendered": null,
-            "type": "br",
-          },
-          "ᕙ(◔◡◔)ᕗ",
-          Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "host",
-            "props": Object {
-              "children": <button>
-                Submit form
-</button>,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "host",
-              "props": Object {
-                "children": "Submit form",
-              },
-              "ref": null,
-              "rendered": "Submit form",
-              "type": "button",
-            },
-            "type": "div",
-          },
-        ],
-        "type": "form",
-      },
-      "type": "div",
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
-      "options": Object {
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
-      },
-    },
-  },
-}
+          "city": "",
+          "zipCode": "",
+        }
+      }
+      errors={Object {}}
+      handleChange={[Function]}
+      handleCityChange={[Function]}
+      index={0}
+      key="0"
+      removeAddress={[Function]}
+    />
+    <div>
+      <button
+        onClick={[Function]}
+      >
+        Add new address
+      </button>
+    </div>
+    <br />
+    ᕙ(◔◡◔)ᕗ
+    <div>
+      <button>
+        Submit form
+      </button>
+    </div>
+  </form>
+</div>
 `;
