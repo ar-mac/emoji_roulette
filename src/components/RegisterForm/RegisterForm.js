@@ -158,6 +158,7 @@ export class RegisterForm extends Component {
           </div>
           {data.addresses.map((address, index) => (
             <AddressFields
+              key={index}
               address={address}
               index={index}
               errors={errors}

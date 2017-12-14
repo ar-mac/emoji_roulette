@@ -66,7 +66,7 @@ DisplayEmoji {
                         <div
                                 dangerouslySetInnerHTML={
                                         Object {
-                                                "__html": "<img class=\\"emoji\\" draggable=\\"false\\" alt=\\"😀\\" src=\\"https://twemoji.maxcdn.com/2/72x72/1f600.png\\"/>",
+                                                "__html": "some mocked string 😀",
                                               }
                                 }
                         />
@@ -116,7 +116,7 @@ DisplayEmoji {
                         <div
                                 dangerouslySetInnerHTML={
                                         Object {
-                                                "__html": "<img class=\\"emoji\\" draggable=\\"false\\" alt=\\"😀\\" src=\\"https://twemoji.maxcdn.com/2/72x72/1f600.png\\"/>",
+                                                "__html": "some mocked string 😀",
                                               }
                                 }
                         />
@@ -221,7 +221,7 @@ DisplayEmoji {
                         <div
                                 dangerouslySetInnerHTML={
                                         Object {
-                                                "__html": "<img class=\\"emoji\\" draggable=\\"false\\" alt=\\"😀\\" src=\\"https://twemoji.maxcdn.com/2/72x72/1f600.png\\"/>",
+                                                "__html": "some mocked string 😀",
                                               }
                                 }
                         />
@@ -267,7 +267,7 @@ DisplayEmoji {
                         <div
                                 dangerouslySetInnerHTML={
                                         Object {
-                                                "__html": "<img class=\\"emoji\\" draggable=\\"false\\" alt=\\"😀\\" src=\\"https://twemoji.maxcdn.com/2/72x72/1f600.png\\"/>",
+                                                "__html": "some mocked string 😀",
                                               }
                                 }
                         />
@@ -369,7 +369,7 @@ DisplayEmoji {
                         <div
                                 dangerouslySetInnerHTML={
                                         Object {
-                                                "__html": "<img class=\\"emoji\\" draggable=\\"false\\" alt=\\"😀\\" src=\\"https://twemoji.maxcdn.com/2/72x72/1f600.png\\"/>",
+                                                "__html": "some mocked string 😀",
                                               }
                                 }
                         />
@@ -412,7 +412,7 @@ DisplayEmoji {
                         <div
                                 dangerouslySetInnerHTML={
                                         Object {
-                                                "__html": "<img class=\\"emoji\\" draggable=\\"false\\" alt=\\"😀\\" src=\\"https://twemoji.maxcdn.com/2/72x72/1f600.png\\"/>",
+                                                "__html": "some mocked string 😀",
                                               }
                                 }
                         />

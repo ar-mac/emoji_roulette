@@ -22,18 +22,22 @@ App {
         className="App container"
 >
         <h2>
-                Welcome to Super Emoji Routlette
+                Welcome to Emoji Routlette
         </h2>
-        <Roulette />
+        <withBackend(Component)
+                handleSubmit={[Function]}
+        />
 </div>,
       "_debugID": 2,
       "_renderedOutput": <div
         className="App container"
 >
         <h2>
-                Welcome to Super Emoji Routlette
+                Welcome to Emoji Routlette
         </h2>
-        <Roulette />
+        <withBackend(Component)
+                handleSubmit={[Function]}
+        />
 </div>,
     },
     "_renderedNodeType": 0,
@@ -47,7 +51,7 @@ App {
   "refs": Object {},
   "setRegistrationStatus": [Function],
   "state": Object {
-    "isRegistered": true,
+    "isRegistered": false,
   },
   "updater": Object {
     "enqueueCallback": [Function],
@@ -84,7 +88,7 @@ App {
         className="App container"
 >
         <h2>
-                Welcome to Super Emoji Routlette
+                Welcome to Emoji Routlette
         </h2>
         <Roulette />
 </div>,
@@ -93,7 +97,7 @@ App {
         className="App container"
 >
         <h2>
-                Welcome to Super Emoji Routlette
+                Welcome to Emoji Routlette
         </h2>
         <Roulette />
 </div>,
