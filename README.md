@@ -211,23 +211,27 @@
 #### Steps
 * snapshot specs
   * markup in different conditions
+  * snapshot tests for data
 * tests for implementation
-  * all lifecycle methods 
-    * triggered naturally 
+  * all lifecycle methods
+    * triggered naturally
     * triggered manually
   * handler methods via find and simulate event
     * `onClick` `onSubmit` event handlers
   * all non handler methods in components (they are called by lifecycle, handlers, or child components)
 * async testing
   * `handleSubmitByBackend` in `withBackend`
-* useful matchers (object)
+* useful matchers (objectContaining, arrayMatching)
+* testing HOCs
+  * using mock component
 * mocking imports
   * mock `twemoji.parse` method in `DisplayEmoji`
   * mock `emojis` import in `Roulette`
+* coverage generation and usage
 
 -------
 
-### React 16 differencies and new things
+### React 16 differences and new things
 
 ### React Router
 
