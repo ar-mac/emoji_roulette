@@ -1,110 +1,125 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> renders 1`] = `
-ShallowWrapper {
-  "length": 1,
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <App />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": null,
-    "nodeType": "host",
-    "props": Object {
-      "children": Array [
+exports[`<App /> rendering renders form component when not isRegistered 1`] = `
+App {
+  "_reactInternalInstance": ShallowComponentWrapper {
+    "_calledComponentWillUnmount": false,
+    "_compositeType": 0,
+    "_context": Object {},
+    "_currentElement": <App />,
+    "_debugID": 1,
+    "_hostContainerInfo": null,
+    "_hostParent": null,
+    "_instance": [Circular],
+    "_mountOrder": 1,
+    "_pendingCallbacks": null,
+    "_pendingElement": null,
+    "_pendingForceUpdate": false,
+    "_pendingReplaceState": false,
+    "_pendingStateQueue": null,
+    "_renderedComponent": NoopInternalComponent {
+      "_currentElement": <div
+        className="App container"
+>
         <h2>
-          Welcome to Emoji Routlette
-</h2>,
-        <withBackend(RegisterForm)
-          handleSubmit={[Function]}
-/>,
-      ],
-      "className": "App container",
+                Welcome to Super Emoji Routlette
+        </h2>
+        <Roulette />
+</div>,
+      "_debugID": 2,
+      "_renderedOutput": <div
+        className="App container"
+>
+        <h2>
+                Welcome to Super Emoji Routlette
+        </h2>
+        <Roulette />
+</div>,
     },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "host",
-        "props": Object {
-          "children": "Welcome to Emoji Routlette",
-        },
-        "ref": null,
-        "rendered": "Welcome to Emoji Routlette",
-        "type": "h2",
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "handleSubmit": [Function],
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-    ],
-    "type": "div",
+    "_renderedNodeType": 0,
+    "_rootNodeID": 0,
+    "_topLevelWrapper": null,
+    "_updateBatchNumber": null,
+    "_warnedAboutRefsInRender": false,
   },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": null,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <h2>
-            Welcome to Emoji Routlette
-</h2>,
-          <withBackend(RegisterForm)
-            handleSubmit={[Function]}
-/>,
-        ],
-        "className": "App container",
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Welcome to Emoji Routlette",
-          },
-          "ref": null,
-          "rendered": "Welcome to Emoji Routlette",
-          "type": "h2",
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "handleSubmit": [Function],
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
-      "type": "div",
+  "context": Object {},
+  "props": Object {},
+  "refs": Object {},
+  "setRegistrationStatus": [Function],
+  "state": Object {
+    "isRegistered": true,
+  },
+  "updater": Object {
+    "enqueueCallback": [Function],
+    "enqueueCallbackInternal": [Function],
+    "enqueueElementInternal": [Function],
+    "enqueueForceUpdate": [Function],
+    "enqueueReplaceState": [Function],
+    "enqueueSetState": [Function],
+    "isMounted": [Function],
+    "validateCallback": [Function],
+  },
+}
+`;
+
+exports[`<App /> rendering renders roulette component when isRegistered 1`] = `
+App {
+  "_reactInternalInstance": ShallowComponentWrapper {
+    "_calledComponentWillUnmount": false,
+    "_compositeType": 0,
+    "_context": Object {},
+    "_currentElement": <App />,
+    "_debugID": 3,
+    "_hostContainerInfo": null,
+    "_hostParent": null,
+    "_instance": [Circular],
+    "_mountOrder": 2,
+    "_pendingCallbacks": null,
+    "_pendingElement": null,
+    "_pendingForceUpdate": false,
+    "_pendingReplaceState": false,
+    "_pendingStateQueue": null,
+    "_renderedComponent": NoopInternalComponent {
+      "_currentElement": <div
+        className="App container"
+>
+        <h2>
+                Welcome to Super Emoji Routlette
+        </h2>
+        <Roulette />
+</div>,
+      "_debugID": 4,
+      "_renderedOutput": <div
+        className="App container"
+>
+        <h2>
+                Welcome to Super Emoji Routlette
+        </h2>
+        <Roulette />
+</div>,
     },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
-      "options": Object {
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
-      },
-    },
-    "lifecycleExperimental": true,
+    "_renderedNodeType": 0,
+    "_rootNodeID": 0,
+    "_topLevelWrapper": null,
+    "_updateBatchNumber": null,
+    "_warnedAboutRefsInRender": false,
+  },
+  "context": Object {},
+  "props": Object {},
+  "refs": Object {},
+  "setRegistrationStatus": [Function],
+  "state": Object {
+    "isRegistered": true,
+  },
+  "updater": Object {
+    "enqueueCallback": [Function],
+    "enqueueCallbackInternal": [Function],
+    "enqueueElementInternal": [Function],
+    "enqueueForceUpdate": [Function],
+    "enqueueReplaceState": [Function],
+    "enqueueSetState": [Function],
+    "isMounted": [Function],
+    "validateCallback": [Function],
   },
 }
 `;

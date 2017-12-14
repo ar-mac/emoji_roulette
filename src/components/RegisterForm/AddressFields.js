@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import { get } from 'lodash';
+import cn from 'classnames';
 
 export class AddressFields extends Component {
   render() {
-    const { address, index, removeAddress, handleCityChange, handleChange } = this.props;
+    const { address, index, removeAddress, handleCityChange, handleChange, errors } = this.props;
     return (
       <div
         className="panel panel-default" key={index}
