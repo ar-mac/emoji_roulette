@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`RegisterForm add address after clicking button 1`] = `
+Array [
+  Object {
+    "city": "city1",
+    "zipCode": "01-001",
+  },
+  Object {
+    "city": "",
+    "zipCode": "",
+  },
+]
+`;
+
 exports[`RegisterForm renders multiple addresses 1`] = `
 <div
   className="register-form row col-md-6 col-md-offset-3"
@@ -91,6 +104,7 @@ exports[`RegisterForm renders multiple addresses 1`] = `
     />
     <div>
       <button
+        id="add_address_button"
         onClick={[Function]}
       >
         Add new address
@@ -211,6 +225,7 @@ exports[`RegisterForm renders whole state correctly 1`] = `
     />
     <div>
       <button
+        id="add_address_button"
         onClick={[Function]}
       >
         Add new address
@@ -304,6 +319,7 @@ exports[`RegisterForm renders with default props 1`] = `
     />
     <div>
       <button
+        id="add_address_button"
         onClick={[Function]}
       >
         Add new address

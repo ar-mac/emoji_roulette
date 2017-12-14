@@ -77,7 +77,7 @@ export class RegisterForm extends Component {
     this.setState({ data: newData });
   };
 
-  addAddress = () => {
+  addAddress = (address) => {
     const { data } = this.state;
 
     const newData = {
@@ -168,7 +168,7 @@ export class RegisterForm extends Component {
             />
           ))}
           <div>
-            <button onClick={this.addAddress}>Add new address</button>
+            <button id="add_address_button" onClick={this.addAddress}>Add new address</button>
           </div>
           <br />
           ᕙ(◔◡◔)ᕗ

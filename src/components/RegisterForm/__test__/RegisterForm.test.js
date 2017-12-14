@@ -46,4 +46,34 @@ describe('RegisterForm', () => {
     wrapper.setState(initialState);
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('add address after clicking button', () => {
+    const { wrapper } = setup();
+
+    const initialState = wrapper.state();
+    initialState.data.addresses = [
+      { city: 'city1', zipCode: '01-001' }
+    ];
+    wrapper.setState(initialState);
+
+    wrapper.find('#add_address_button').simulate('click');
+    expect(wrapper.state().data.addresses).toEqual([
+      {
+        "city": "city1",
+        "zipCode": "01-001",
+      },
+      {
+        "city": "",
+        "zipCode": "",
+      },
+    ]);
+
+    expect(wrapper.state().data.addresses).toMatchSnapshot();
+
+    expect(wrapper.state().data.addresses).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({city: ''})
+      ])
+    );
+  });
 });
