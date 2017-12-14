@@ -24,11 +24,11 @@ describe('RegisterForm', () => {
           { city: 'city1', zipCode: '01-001' },
           { city: 'city2', zipCode: '07-007' },
         ],
-        errors: {
-          email: 'is not correct',
-        },
-        isSending: false,
-      }
+      },
+      errors: {
+        email: 'is not correct',
+      },
+      isSending: false,
     };
 
     wrapper.setState(state);
