@@ -72,8 +72,17 @@ describe('RegisterForm', () => {
 
     expect(wrapper.state().data.addresses).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({city: ''})
+        expect.objectContaining({ city: '' })
       ])
     );
+  });
+
+  test('update state according to event', () => {
+    const { wrapper } = setup();
+    const event = {
+      target: { name: 'age', value: '12' },
+    };
+    wrapper.find('#age').simulate('change', event);
+    expect(wrapper.state().data.age).toEqual('12');
   });
 });
