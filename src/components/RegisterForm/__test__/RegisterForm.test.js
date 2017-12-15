@@ -85,4 +85,13 @@ describe('RegisterForm', () => {
     wrapper.find('#age').simulate('change', event);
     expect(wrapper.state().data.age).toEqual('12');
   });
+
+  test('execute handleChange twice', () => {
+    const { wrapper } = setup();
+
+    wrapper.instance().handleChange = jest.fn();
+    wrapper.instance().handleCityChange(0)({target: {value: 'Bielsko-Biała'}});
+    const event = {target: {value: 'Bielsko-Biała'}};
+    expect(wrapper.instance().handleChange).toHaveBeenCalledWith({ target: { value: '43-300', name: `addresses[0].zipCode` } }, event);
+  })
 });
