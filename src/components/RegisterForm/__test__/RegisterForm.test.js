@@ -91,9 +91,15 @@ describe('RegisterForm', () => {
     const event = {
       target: {value: 'Bielsko-Biała'},
     };
+    const address = {
+      target: {
+        value: '43-300',
+        name: `addresses[0].zipCode`,
+      }
+    };
     wrapper.instance().handleChange = jest.fn();
     wrapper.instance().handleCityChange(0)(event);
-    expect(wrapper.instance().handleChange).toHaveBeenCalledWith({target:{value: '43-300', name: `addresses[0].zipCode`}});
-    expect(wrapper.instance().handleChange).toHaveBeenCalledWith(event);
+    expect(wrapper.instance().handleChange.mock.calls[0][0]).toEqual(event);
+    expect(wrapper.instance().handleChange.mock.calls[1][0]).toEqual(address);
   });
 });
