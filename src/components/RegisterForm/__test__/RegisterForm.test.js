@@ -88,10 +88,12 @@ describe('RegisterForm', () => {
 
   test('execute handleChange twice', () => {
     const { wrapper } = setup();
-
+    const event = {
+      target: {value: 'Bielsko-Biała'},
+    };
     wrapper.instance().handleChange = jest.fn();
-    wrapper.instance().handleCityChange(0)({target: {value: 'Bielsko-Biała'}});
-    const event = {target: {value: 'Bielsko-Biała'}};
-    expect(wrapper.instance().handleChange).toHaveBeenCalledWith({ target: { value: '43-300', name: `addresses[0].zipCode` } }, event);
-  })
+    wrapper.instance().handleCityChange(0)(event);
+    expect(wrapper.instance().handleChange).toHaveBeenCalledWith({target:{value: '43-300', name: `addresses[0].zipCode`}});
+    expect(wrapper.instance().handleChange).toHaveBeenCalledWith(event);
+  });
 });
