@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import { isEmpty } from 'lodash';
+import { connect } from 'react-redux';
+
+import { login, logout } from '../../store/registration/actionCreators';
 
 const usernames = ['user', 'user1', 'Bob', 'Me'];
 
@@ -13,10 +16,10 @@ export const withBackend = (WrappedComponent) => {
 
           if (isEmpty(errors)) {
             resolve();
-            this.props.handleSubmit(true);
+            this.props.login();
           } else {
             reject(errors);
-            this.props.handleSubmit(false);
+            this.props.logout();
           }
         }, 2000);
       })
@@ -42,8 +45,10 @@ export const withBackend = (WrappedComponent) => {
   WithBackend.displayName = `withBackend(${WrappedComponent.displayName || 'Component'})`;
 
   WithBackend.propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired,
   };
 
-  return WithBackend;
+  const mapDispatchToProps = { login, logout };
+  return connect(null, mapDispatchToProps)(WithBackend);
 };
