@@ -14,8 +14,8 @@ function emojisReducer(state = initialState, action) {
     case types.SET_NEW: {
       return {
         ...state,
-        selectedEmojiIndex: action.payload,
-        previousEmojis: [action.payload, ...state.previousEmojis].slice(0, 9)
+        selectedEmojiCP: action.payload,
+        previousEmojisCPs: [action.payload, ...state.previousEmojisCPs].slice(0, 9)
       };
     }
     default: {

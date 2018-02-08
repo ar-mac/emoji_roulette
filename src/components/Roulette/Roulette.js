@@ -4,12 +4,11 @@ import PropTypes from 'proptypes';
 
 import DisplayEmojiWithTimer, { DisplayEmoji } from './DisplayEmoji';
 import NoEmojiWithTimer, { NoEmojiMessage } from './NoEmojiMessage';
-import { setupEmojis, setNewEmoji } from '../../store/emojis/actionCreators';
+import { setupEmojis, setNewEmoji, setFirstEmoji } from '../../store/emojis/actionCreators';
 import { getSelectedEmoji, getPreviousEmojis } from '../../store/emojis/selectors';
 
 class Roulette extends Component {
   state = {
-    previousEmojis: [0],
     resetTime: 2,
   };
 
@@ -18,15 +17,11 @@ class Roulette extends Component {
   }
 
   clearIndex = () => {
-    this.setState({ index: 0 });
+    this.props.setFirstEmoji();
   };
 
   getRandomEmoji = () => {
-    const index = Math.floor(Math.random() * 100);
-    this.setState({
-      index,
-      previousEmojis: [index, ...this.state.previousEmojis].slice(0, 9)
-    });
+    this.props.setNewEmoji();
   };
 
   handleChange = ({ target: { value: resetTime } }) => {
@@ -44,7 +39,7 @@ class Roulette extends Component {
         <button onClick={this.getRandomEmoji}>Get new emoji</button>
         <div><input type="text" onChange={this.handleChange} defaultValue={resetTime} /></div>
         {
-          (selectedEmoji.emoji)
+          (selectedEmoji.emojiIcon)
             ? <DisplayEmojiWithTimer
               key={selectedEmoji.codepoint}
               emoji={selectedEmoji}
@@ -62,7 +57,7 @@ class Roulette extends Component {
         <hr />
         {
           previousEmojis.slice(1, 6).map((emoji) => {
-            return (emoji.emoji)
+            return (emoji.emojiIcon)
               ? <DisplayEmoji
                 key={emoji.codepoint}
                 emoji={emoji}
@@ -80,6 +75,7 @@ Roulette.propTypes = {
   previousEmojis: PropTypes.array.isRequired,
   setupEmojis: PropTypes.func.isRequired,
   setNewEmoji: PropTypes.func.isRequired,
+  setFirstEmoji: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -90,6 +86,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   setupEmojis,
   setNewEmoji,
+  setFirstEmoji,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Roulette);
+  export default connect(mapStateToProps, mapDispatchToProps)(Roulette);
