@@ -1,7 +1,7 @@
 import * as types from './types';
 
 const initialState = {
-  isRegistered: false,
+  isRegistered: true,
 };
 
 function registrationReducer(state = initialState, action) {

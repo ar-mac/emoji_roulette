@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'proptypes';
 
 import DisplayEmojiWithTimer, { DisplayEmoji } from './DisplayEmoji';
 import NoEmojiWithTimer, { NoEmojiMessage } from './NoEmojiMessage';
-import { Emojis } from './emojis.js';
+import { setupEmojis, setNewEmoji } from '../../store/emojis/actionCreators';
+import { getSelectedEmoji, getPreviousEmojis } from '../../store/emojis/selectors';
 
 class Roulette extends Component {
   state = {
-    index: 0,
     previousEmojis: [0],
     resetTime: 2,
-    emojis: Emojis,
   };
+
+  componentDidMount() {
+    this.props.setupEmojis();
+  }
 
   clearIndex = () => {
     this.setState({ index: 0 });
@@ -31,39 +36,38 @@ class Roulette extends Component {
   };
 
   render() {
-    const { resetTime, index, emojis, previousEmojis } = this.state;
+    const { selectedEmoji, previousEmojis } = this.props;
+    const { resetTime } = this.state;
 
     return (
       <div className="Roulette">
         <button onClick={this.getRandomEmoji}>Get new emoji</button>
         <div><input type="text" onChange={this.handleChange} defaultValue={resetTime} /></div>
         {
-          (index < emojis.length)
+          (selectedEmoji.emoji)
             ? <DisplayEmojiWithTimer
-              key={index}
-              index={index}
-              emoji={emojis[index]}
+              key={selectedEmoji.codepoint}
+              emoji={selectedEmoji}
               clearIndex={this.clearIndex}
               resetTime={resetTime}
               resetHandler={this.getRandomEmoji}
             />
             : <NoEmojiWithTimer
-              key={index}
-              index={index}
+              key={selectedEmoji.codepoint}
+              codepoint={selectedEmoji.codepoint}
               resetTime={resetTime}
               resetHandler={this.getRandomEmoji}
             />
         }
         <hr />
         {
-          previousEmojis.slice(1, 6).map((emojiIndex, index) => {
-            return (emojiIndex < emojis.length)
+          previousEmojis.slice(1, 6).map((emoji) => {
+            return (emoji.emoji)
               ? <DisplayEmoji
-                key={index}
-                index={emojiIndex}
-                emoji={emojis[emojiIndex]}
+                key={emoji.codepoint}
+                emoji={emoji}
               />
-              : <NoEmojiMessage key={index} index={emojiIndex} />;
+              : <NoEmojiMessage key={emoji.codepoint} codepoint={emoji.codepoint} />;
           })
         }
       </div>
@@ -71,4 +75,21 @@ class Roulette extends Component {
   }
 }
 
-export default Roulette;
+Roulette.propTypes = {
+  selectedEmoji: PropTypes.object.isRequired,
+  previousEmojis: PropTypes.array.isRequired,
+  setupEmojis: PropTypes.func.isRequired,
+  setNewEmoji: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  selectedEmoji: getSelectedEmoji(state),
+  previousEmojis: getPreviousEmojis(state),
+});
+
+const mapDispatchToProps = {
+  setupEmojis,
+  setNewEmoji,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Roulette);
