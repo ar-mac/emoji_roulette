@@ -3,8 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import registration from './registration/reducer';
 
 const rootReducer = combineReducers({
-  registration
-//  here be reducers
+  registration,
 });
 
 export default createStore(rootReducer, composeWithDevTools());

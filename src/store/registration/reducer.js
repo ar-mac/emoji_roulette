@@ -18,4 +18,4 @@ function registrationReducer(state = initialState, action) {
   }
 }
 
-export default registrationReducer()
+export default registrationReducer;
