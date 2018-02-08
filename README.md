@@ -231,12 +231,57 @@
 
 -------
 
+### Done during CoderDojo at 8-Feb-2018
+
+#### Introduction
+* What is Redux
+ * https://medium.freecodecamp.org/an-introduction-to-the-redux-first-routing-model-98926ebf53cb
+ * https://cdn-images-1.medium.com/max/2000/1*R_d_jeLBUp3hdjLeWRnz4Q.png
+* When to use it
+* Rules
+  * Do not mutate state
+* Redux Devtools
+* Reducers
+* Action Creators
+* Selectors
+
+#### Steps
+* setup redux and react-redux 
+  * https://redux.js.org/docs/basics/UsageWithReact.html#passing-the-store
+  * https://redux.js.org/docs/api/combineReducers.html#reducersindexjs
+* setup redux dev-tools
+  * https://github.com/zalmoxisus/redux-devtools-extension#13-use-redux-devtools-extension-package-from-npm
+* implement emojis via redux
+  * define which state properties are related to handling emoji
+  * create folder `src/store/emojis` with `types.js`, `actionCreators.js`, `reducer.js`, `selectors.js` files
+  * define and export `types` for what can happen with emoji (initialization, selecting new)
+  * implement reducer for emojis which will react on the types https://redux.js.org/docs/basics/Reducers.html#handling-actions
+  * implement action creators for defined types https://redux.js.org/docs/basics/Actions.html#action-creators
+  * `connect` Roulette to store and map state and action creators to its props https://redux.js.org/docs/basics/UsageWithReact.html#containersfilterlinkjs
+  * create selectors so component does not need to know about store structure https://redux.js.org/docs/recipes/ComputingDerivedData.html#containersvisibletodolistjs
+  * remove state from Roulette which was extracted to redux
+  * update Roulette methods which previously changed state, to call proper action creator
+* implement timer via redux
+  * define which state properties are related to handling timer
+  * create folder `src/store/timer` with `types.js`, `actionCreators.js`, `reducer.js`, `selectors.js` files
+  * define and export `types` for what can happen with timer (resetTime change, secondsPassed incrementation)
+  * implement reducer for emojis which will react on the types https://redux.js.org/docs/basics/Reducers.html#handling-actions
+  * implement action creators for defined types https://redux.js.org/docs/basics/Actions.html#action-creators
+  * `connect` withTimer wrapped component to store and map state and action creators to its props https://redux.js.org/docs/basics/UsageWithReact.html#containersfilterlinkjs
+  * remove state from withTImer which was extracted to redux
+  * update withTimer methods which previously changed state, to call proper action creator
+
+#### Materials
+* Free Redux tutorial on egghead https://egghead.io/courses/getting-started-with-redux
+* Part 2 Redux tutorial on egghead https://egghead.io/courses/building-react-applications-with-idiomatic-redux
+
+------
+
+### Redux thunk
+
 ### React 16 differences and new things
 
 ### React Router
-
-### React Redux
-  * Redux thunk
 
 ### Redux Form
 

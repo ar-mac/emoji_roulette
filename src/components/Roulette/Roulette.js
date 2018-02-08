@@ -8,9 +8,8 @@ class Roulette extends Component {
   state = {
     index: 0,
     previousEmojis: [0],
-    resetTime: 0,
+    resetTime: 2,
     emojis: Emojis,
-    formData: { emoji: '', codepoint: '1235215' },
   };
 
   clearIndex = () => {
@@ -31,16 +30,8 @@ class Roulette extends Component {
     this.setState({ resetTime: +resetTime });
   };
 
-  updateValue = (event) => {
-
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
   render() {
-    const { resetTime, index, emojis, previousEmojis, formData } = this.state;
+    const { resetTime, index, emojis, previousEmojis } = this.state;
 
     return (
       <div className="Roulette">
@@ -63,27 +54,6 @@ class Roulette extends Component {
               resetHandler={this.getRandomEmoji}
             />
         }
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="emoji-input">Add emoji</label>
-          <input
-            type="text"
-            name="emoji"
-            id="emoji-input"
-            onChange={this.updateValue}
-            value={formData.emoji}
-          />
-          <hr />
-          <label htmlFor="point-input">Add codepoint</label>
-          <input
-            type="text"
-            name="codepoint"
-            id="point-input"
-            onChange={this.updateValue}
-            value={formData.codepoint}
-          />
-          <hr />
-          <input type="submit" />
-        </form>
         <hr />
         {
           previousEmojis.slice(1, 6).map((emojiIndex, index) => {
