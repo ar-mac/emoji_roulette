@@ -1,0 +1,337 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegisterForm add address after clicking button 1`] = `
+Array [
+  Object {
+    "city": "city1",
+    "zipCode": "01-001",
+  },
+  Object {
+    "city": "",
+    "zipCode": "",
+  },
+]
+`;
+
+exports[`RegisterForm renders multiple addresses 1`] = `
+<div
+  className="register-form row col-md-6 col-md-offset-3"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="age"
+      >
+        age
+      </label>
+      <input
+        className="form-control"
+        id="age"
+        name="age"
+        onChange={[Function]}
+        placeholder="Provide your age"
+        type="number"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="username"
+      >
+        username
+      </label>
+      <input
+        className="form-control"
+        id="username"
+        name="username"
+        onChange={[Function]}
+        placeholder="Provide your username"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="email"
+      >
+        email
+      </label>
+      <input
+        className="form-control"
+        id="email"
+        name="email"
+        onChange={[Function]}
+        placeholder="Provide your email"
+        type="email"
+        value=""
+      />
+    </div>
+    <AddressFields
+      address={
+        Object {
+          "city": "city1",
+          "zipCode": "01-001",
+        }
+      }
+      errors={Object {}}
+      handleChange={[Function]}
+      handleCityChange={[Function]}
+      index={0}
+      key="0"
+      removeAddress={[Function]}
+    />
+    <AddressFields
+      address={
+        Object {
+          "city": "city2",
+          "zipCode": "07-007",
+        }
+      }
+      errors={Object {}}
+      handleChange={[Function]}
+      handleCityChange={[Function]}
+      index={1}
+      key="1"
+      removeAddress={[Function]}
+    />
+    <div>
+      <button
+        id="add_address_button"
+        onClick={[Function]}
+      >
+        Add new address
+      </button>
+    </div>
+    <br />
+    ᕙ(◔◡◔)ᕗ
+    <div>
+      <button>
+        Submit form
+      </button>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`RegisterForm renders whole state correctly 1`] = `
+<div
+  className="register-form row col-md-6 col-md-offset-3"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="age"
+      >
+        age
+      </label>
+      <input
+        className="form-control"
+        id="age"
+        name="age"
+        onChange={[Function]}
+        placeholder="Provide your age"
+        type="number"
+        value="45"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="username"
+      >
+        username
+      </label>
+      <input
+        className="form-control"
+        id="username"
+        name="username"
+        onChange={[Function]}
+        placeholder="Provide your username"
+        type="text"
+        value="user1"
+      />
+    </div>
+    <div
+      className="form-group has-error"
+    >
+      <label
+        htmlFor="email"
+      >
+        email
+      </label>
+      <input
+        className="form-control"
+        id="email"
+        name="email"
+        onChange={[Function]}
+        placeholder="Provide your email"
+        type="email"
+        value="some failing"
+      />
+      <span
+        className="help-block"
+      >
+        is not correct
+      </span>
+    </div>
+    <AddressFields
+      address={
+        Object {
+          "city": "city1",
+          "zipCode": "01-001",
+        }
+      }
+      errors={
+        Object {
+          "email": "is not correct",
+        }
+      }
+      handleChange={[Function]}
+      handleCityChange={[Function]}
+      index={0}
+      key="0"
+      removeAddress={[Function]}
+    />
+    <AddressFields
+      address={
+        Object {
+          "city": "city2",
+          "zipCode": "07-007",
+        }
+      }
+      errors={
+        Object {
+          "email": "is not correct",
+        }
+      }
+      handleChange={[Function]}
+      handleCityChange={[Function]}
+      index={1}
+      key="1"
+      removeAddress={[Function]}
+    />
+    <div>
+      <button
+        id="add_address_button"
+        onClick={[Function]}
+      >
+        Add new address
+      </button>
+    </div>
+    <br />
+    ᕙ(◔◡◔)ᕗ
+    <div>
+      <button>
+        Submit form
+      </button>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`RegisterForm renders with default props 1`] = `
+<div
+  className="register-form row col-md-6 col-md-offset-3"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="age"
+      >
+        age
+      </label>
+      <input
+        className="form-control"
+        id="age"
+        name="age"
+        onChange={[Function]}
+        placeholder="Provide your age"
+        type="number"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="username"
+      >
+        username
+      </label>
+      <input
+        className="form-control"
+        id="username"
+        name="username"
+        onChange={[Function]}
+        placeholder="Provide your username"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="email"
+      >
+        email
+      </label>
+      <input
+        className="form-control"
+        id="email"
+        name="email"
+        onChange={[Function]}
+        placeholder="Provide your email"
+        type="email"
+        value=""
+      />
+    </div>
+    <AddressFields
+      address={
+        Object {
+          "city": "",
+          "zipCode": "",
+        }
+      }
+      errors={Object {}}
+      handleChange={[Function]}
+      handleCityChange={[Function]}
+      index={0}
+      key="0"
+      removeAddress={[Function]}
+    />
+    <div>
+      <button
+        id="add_address_button"
+        onClick={[Function]}
+      >
+        Add new address
+      </button>
+    </div>
+    <br />
+    ᕙ(◔◡◔)ᕗ
+    <div>
+      <button>
+        Submit form
+      </button>
+    </div>
+  </form>
+</div>
+`;
