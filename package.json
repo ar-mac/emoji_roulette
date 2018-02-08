@@ -23,7 +23,8 @@
   "devDependencies": {
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-15": "^1.0.2",
-    "enzyme-to-json": "^3.3.0"
+    "enzyme-to-json": "^3.3.0",
+    "redux-devtools-extension": "^2.13.2"
   },
   "jest": {
     "snapshotSerializers": [
