@@ -6,7 +6,7 @@ import './App.css';
 
 class App extends Component {
   state = {
-    isRegistered: false,
+    isRegistered: true,
   };
 
   setRegistrationStatus = (isRegistered) => {
