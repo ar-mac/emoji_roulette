@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Roulette from './components/Roulette/Roulette';
 import RegisterForm from './components/RegisterForm/RegisterForm';
 import './App.css';
+import { getRegistrationStatus } from './store/registration/selectors';
 
 class App extends PureComponent {
   render() {
@@ -22,7 +23,7 @@ class App extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  isRegistered: state.registration.isRegistered,
+  isRegistered: getRegistrationStatus(state),
 });
 
 export default connect(mapStateToProps)(App);
