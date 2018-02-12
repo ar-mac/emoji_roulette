@@ -16,6 +16,7 @@ export const NoEmojiMessage = ({codepoint, secondsPassed}) => (
 
 NoEmojiMessage.propTypes = {
   codepoint: PropTypes.number.isRequired,
+  secondsPassed: PropTypes.number,
 };
 
 export default withTimer(NoEmojiMessage);

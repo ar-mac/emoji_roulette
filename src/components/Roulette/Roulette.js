@@ -39,17 +39,17 @@ class Roulette extends Component {
         <button onClick={this.getRandomEmoji}>Get new emoji</button>
         <div><input type="text" onChange={this.handleChange} defaultValue={resetTime} /></div>
         {
-          (selectedEmoji.emojiIcon)
-            ? <DisplayEmojiWithTimer
+          (selectedEmoji.notFound)
+            ? <NoEmojiWithTimer
               key={selectedEmoji.codepoint}
-              emoji={selectedEmoji}
-              clearIndex={this.clearIndex}
+              codepoint={selectedEmoji.codepoint}
               resetTime={resetTime}
               resetHandler={this.getRandomEmoji}
             />
-            : <NoEmojiWithTimer
+            : <DisplayEmojiWithTimer
               key={selectedEmoji.codepoint}
-              codepoint={selectedEmoji.codepoint}
+              emoji={selectedEmoji}
+              clearIndex={this.clearIndex}
               resetTime={resetTime}
               resetHandler={this.getRandomEmoji}
             />
@@ -57,12 +57,9 @@ class Roulette extends Component {
         <hr />
         {
           previousEmojis.slice(1, 6).map((emoji) => {
-            return (emoji.emojiIcon)
-              ? <DisplayEmoji
-                key={emoji.codepoint}
-                emoji={emoji}
-              />
-              : <NoEmojiMessage key={emoji.codepoint} codepoint={emoji.codepoint} />;
+            return (emoji.notFound)
+              ? <NoEmojiMessage key={emoji.codepoint} codepoint={emoji.codepoint} />
+              : <DisplayEmoji key={emoji.codepoint} emoji={emoji} />;
           })
         }
       </div>
@@ -89,4 +86,4 @@ const mapDispatchToProps = {
   setFirstEmoji,
 };
 
-  export default connect(mapStateToProps, mapDispatchToProps)(Roulette);
+export default connect(mapStateToProps, mapDispatchToProps)(Roulette);

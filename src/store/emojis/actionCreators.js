@@ -1,6 +1,10 @@
 import * as types from './types';
 import { Emojis } from '../../emojis';
 
+const codepoints = Emojis.map(({ codepoint }) => codepoint);
+const minCodepoint = Math.min(...codepoints);
+const maxCodepoint = Math.max(...codepoints);
+
 export const setupEmojis = () => {
   const payload = {};
   Emojis.forEach((emoji) => payload[emoji.codepoint] = emoji);
@@ -12,11 +16,10 @@ export const setupEmojis = () => {
 };
 
 export const setNewEmoji = () => {
-  const index = Math.floor(Math.random() * 100);
-  const randomEmoji = Emojis[index] || {};
+  const randomCodepoint = Math.floor(Math.random() * (maxCodepoint - minCodepoint) + minCodepoint);
   return {
     type: types.SET_NEW,
-    payload: randomEmoji.codepoint
+    payload: randomCodepoint
   }
 };
 
