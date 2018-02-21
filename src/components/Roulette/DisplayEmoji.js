@@ -6,7 +6,7 @@ import { withTimer } from './withTimer';
 
 export class DisplayEmoji extends Component {
   render() {
-    const { index, clearIndex, secondsPassed, emoji } = this.props;
+    const { clearIndex, secondsPassed, emoji } = this.props;
     const twemojiMarkup = {
       __html: twemoji.parse(emoji.emojiIcon)
     };
@@ -22,7 +22,6 @@ export class DisplayEmoji extends Component {
           <div>code: {emoji.codepoint}</div>
           <div>parsed: {String.fromCodePoint(emoji.codepoint)}</div>
           <div>twemoji: <div dangerouslySetInnerHTML={twemojiMarkup}/></div>
-          <div>index: {index}</div>
         </div>
       </div>
     )
@@ -30,7 +29,6 @@ export class DisplayEmoji extends Component {
 }
 
 DisplayEmoji.propTypes = {
-  index: PropTypes.number.isRequired,
   clearIndex: PropTypes.func,
   secondsPassed: PropTypes.number,
   emoji: PropTypes.object,

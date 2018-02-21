@@ -251,6 +251,17 @@
   * https://redux.js.org/docs/api/combineReducers.html#reducersindexjs
 * setup redux dev-tools
   * https://github.com/zalmoxisus/redux-devtools-extension#13-use-redux-devtools-extension-package-from-npm
+* implement registration via redux
+  * define which state properties are related to handling registration status
+  * create folder `src/store/registration` with `types.js`, `actionCreators.js`, `reducer.js`, `selectors.js` files
+  * define and export `types` for what can happen with registration (login/logout)
+  * implement reducer for registration which will react on the types https://redux.js.org/docs/basics/Reducers.html#handling-actions
+  * implement action creators for defined types https://redux.js.org/docs/basics/Actions.html#action-creators
+  * `connect` `App` component to store and map state to its props https://redux.js.org/docs/basics/UsageWithReact.html#containersfilterlinkjs
+  * `connect` `withBackend` `WrappedComponent` to store and map action creators to its props https://redux.js.org/docs/basics/UsageWithReact.html#containersfilterlinkjs
+  * remove state from `App` which was extracted to redux
+  * remove props from `withBacked` which were reimplemented via actionCreators
+  * update `withBackend` methods which previously called handleRegistration, to call proper action creator
 * implement emojis via redux
   * define which state properties are related to handling emoji
   * create folder `src/store/emojis` with `types.js`, `actionCreators.js`, `reducer.js`, `selectors.js` files
@@ -261,15 +272,6 @@
   * create selectors so component does not need to know about store structure https://redux.js.org/docs/recipes/ComputingDerivedData.html#containersvisibletodolistjs
   * remove state from Roulette which was extracted to redux
   * update Roulette methods which previously changed state, to call proper action creator
-* implement timer via redux
-  * define which state properties are related to handling timer
-  * create folder `src/store/timer` with `types.js`, `actionCreators.js`, `reducer.js`, `selectors.js` files
-  * define and export `types` for what can happen with timer (resetTime change, secondsPassed incrementation)
-  * implement reducer for emojis which will react on the types https://redux.js.org/docs/basics/Reducers.html#handling-actions
-  * implement action creators for defined types https://redux.js.org/docs/basics/Actions.html#action-creators
-  * `connect` withTimer wrapped component to store and map state and action creators to its props https://redux.js.org/docs/basics/UsageWithReact.html#containersfilterlinkjs
-  * remove state from withTImer which was extracted to redux
-  * update withTimer methods which previously changed state, to call proper action creator
 
 #### Materials
 * Free Redux tutorial on egghead https://egghead.io/courses/getting-started-with-redux
@@ -278,6 +280,8 @@
 ------
 
 ### Redux thunk
+
+### Testing redux and middleware
 
 ### React 16 differences and new things
 

@@ -3,19 +3,20 @@ import PropTypes from 'proptypes';
 
 import { withTimer } from './withTimer';
 
-export const NoEmojiMessage = ({index, secondsPassed}) => (
+export const NoEmojiMessage = ({codepoint, secondsPassed}) => (
   <div className="emoji-card">
     <div className="emoji-card__head">
       {secondsPassed >= 0 && <div>secondsPassed: {secondsPassed}</div>}
     </div>
     <div className="emoji-card__body">
-      <div>No emoji for index: {index}</div>
+      <div>No emoji for codepoint: {codepoint}</div>
     </div>
   </div>
 );
 
 NoEmojiMessage.propTypes = {
-  index: PropTypes.number.isRequired,
+  codepoint: PropTypes.number.isRequired,
+  secondsPassed: PropTypes.number,
 };
 
 export default withTimer(NoEmojiMessage);

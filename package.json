@@ -8,7 +8,9 @@
     "proptypes": "^1.1.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
     "react-scripts": "1.0.11",
+    "redux": "^3.7.2",
     "twemoji": "^2.5.0",
     "yup": "^0.22.1"
   },
@@ -21,9 +23,12 @@
   "devDependencies": {
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-15": "^1.0.2",
-    "enzyme-to-json": "^3.3.0"
+    "enzyme-to-json": "^3.3.0",
+    "redux-devtools-extension": "^2.13.2"
   },
   "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }
