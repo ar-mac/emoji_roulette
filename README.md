@@ -1,6 +1,6 @@
 ## Features to be implemented
 
-### Done during CoderDojo at 24-Aug-2017
+### Done during CoderDojo at 24-Aug-2017 - general introduction to React
 
 * Display random emoji in `App` component
   * Import array of emojis from `src/assets/emojis.js` to component file
@@ -31,7 +31,7 @@
 
 --------------
 
-### Done during CoderDojo at 07-Sep-2017
+### Done during CoderDojo at 07-Sep-2017 - general intro to React pt.2
 
 * Implement resetting index in `DisplayEmoji` component
   * Create method `resetIndex` in `App` resetting `state.index` to `0`
@@ -59,7 +59,7 @@
 
 --------------
 
-### Done during CoderDojo at 21-Sep-2017
+### Done during CoderDojo at 21-Sep-2017 - Higher Order Components (HOC's)
 
 * Extract behaviour functionality from DisplayEmoji into HOC (Higher Order Component)
   * Create new file `withTimer.js` in `src/assets` folder
@@ -97,10 +97,10 @@
 
 -------------
 
-### Done during CoderDojo at 12-Oct-2017
+### Done during CoderDojo at 12-Oct-2017 - forms and validation
 
 #### Form Features
-* validation, and server validation
+* validation, and mocked server validation
 * error handling
 * formatting
 * scoped fields (price range, disabling options depending on other input)
@@ -184,7 +184,7 @@
 
 -------------
 
-### Done during CoderDojo at 23-Nov-2017
+### Done during CoderDojo at 23-Nov-2017 and 14-Dec-2017 - testing with jest.js
 
 #### Introduction
 * What is [Jest](http://facebook.github.io/jest/)
@@ -231,7 +231,7 @@
 
 -------
 
-### Done during CoderDojo at 8-Feb-2018
+### Done during CoderDojo at 8-Feb-2018 - Redux
 
 #### Introduction
 * What is Redux
@@ -276,6 +276,42 @@
 #### Materials
 * Free Redux tutorial on egghead https://egghead.io/courses/getting-started-with-redux
 * Part 2 Redux tutorial on egghead https://egghead.io/courses/building-react-applications-with-idiomatic-redux
+
+------
+
+### Done during CoderDojo at 22-Feb-2018 - LocalStorage, Redux-Thunk middleware and fetch
+
+#### Steps
+* Add redux thunk [package](https://github.com/gaearon/redux-thunk#installation)
+* Resolve warning `"react-test-renderer@15.6.2" has incorrect peer dependency "react@^15.6.2"` if occurs
+* Store `isRegistered` flag in `localStorage`
+  * Add `src/utils/localStorage` with `load` and `save` registrationStatus methods
+  * For loading isRegistered flag use `localStorage.getItem` method
+  * Add second parameter to `createStore` which matches the store structure and sets isRegistered to result of `loadRegistrationStatus` method
+  * Change `registration/actionCreators` to use thunk, so they call `saveRegistationStatus` setting proper flag 
+  * Add logout button and connect it to proper action creator (it should be wrapped in div.logout to have minimal styling)
+* Add [json-server](https://github.com/typicode/json-server) to store data there
+* Migrate Emojis fetching to thunk
+  * On `setupEmojis` action creator, call json-server using [fetch](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch) to get emojis and store them
+  * Migrate emojis identification to id's
+    * Update algorithm for getting random emojis to use ids
+    * Update reducer, selectors, components
+* Migrate user login to thunk
+  * Make a call to the json-server to persist user provided data
+  * Save userId into `localStorage`
+* Add saving of history for user
+  * User account stored in the json-server should have `selectedEmojiCP` and `previousEmojisCPs` properties
+  * When new emoji is picked up, store it and emoji history in the backend
+  * On user authentication, populate the store with user related emoji data  
+* Add [Chuck Norris jokes](https://api.chucknorris.io/) so emoji displays reaction to given joke
+  * Add `store/jokes` folder with `reducer`, `actionCreators`
+  * Create `getNewJoke` AC which calls Chuck Norris api and returns promise with it's response
+  * 
+  * Add `store/reactions` folder with only `actionCreators` file
+  * Create `setNewReaction` AC which calls `setNewEmoji` and `setNewJoke`
+
+#### Materials
+[list of free apis](https://github.com/toddmotto/public-apis#personality)
 
 ------
 
