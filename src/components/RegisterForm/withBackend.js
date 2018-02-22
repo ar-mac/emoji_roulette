@@ -13,7 +13,7 @@ export const withBackend = (WrappedComponent) => {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           const errors = this.validateByBackend(formData);
-
+          console.log('Dispatched logout', errors);                     
           if (isEmpty(errors)) {
             resolve();
             this.props.login();
@@ -21,7 +21,7 @@ export const withBackend = (WrappedComponent) => {
             reject(errors);
             this.props.logout();
           }
-        }, 2000);
+        }, 200);
       })
     };
 

@@ -45,14 +45,17 @@ export class RegisterForm extends Component {
     event.preventDefault();
 
     const { data } = this.state;
-    this.schema.validate(data)
+    this.schema.validate(data, {abortEarly: false})
       .then(isValid => {
         if (isValid) {
           this.setState({ isSending: true });
           this.props.handleSubmit(data).catch(errors => this.setState({ errors }));
         }
       })
-      .catch(errors => this.setState({ errors }))
+      .catch(errors => {
+        console.log(errors);
+        this.setState({ errors })
+      })
   };
 
   handleChange = ({ target }) => {
