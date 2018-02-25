@@ -2,8 +2,8 @@ import * as types from './types';
 
 const initialState = {
   byId: {},
-  selectedEmojiCP: 0x1F600,
-  previousEmojisCPs: [0x1F600],
+  selectedEmojiId: 4,
+  previousEmojisIds: [4],
 };
 
 function emojisReducer(state = initialState, action) {
@@ -14,8 +14,8 @@ function emojisReducer(state = initialState, action) {
     case types.SET_NEW: {
       return {
         ...state,
-        selectedEmojiCP: action.payload,
-        previousEmojisCPs: [action.payload, ...state.previousEmojisCPs].slice(0, 9)
+        selectedEmojiId: action.payload,
+        previousEmojisIds: [action.payload, ...state.previousEmojisIds].slice(0, 9)
       };
     }
     default: {

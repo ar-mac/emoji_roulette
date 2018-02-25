@@ -1,14 +1,10 @@
 import * as types from './types';
 import { Emojis } from '../../emojis';
 
-const codepoints = Emojis.map(({ codepoint }) => codepoint);
-const minCodepoint = Math.min(...codepoints);
-const maxCodepoint = Math.max(...codepoints);
-
 export const setupEmojis = () => dispatch => {
-  fetch('http://localhost:3001/emojis').then((sth) => sth.json()).then(emojis => {
+  fetch('http://localhost:3001/emojis').then((response) => response.json()).then(emojis => {
     const payload = {};
-    emojis.forEach((emoji) => payload[emoji.codepoint] = emoji);
+    emojis.forEach((emoji) => payload[emoji.id] = emoji);
     dispatch({
       type: types.SETUP,
       payload
@@ -17,14 +13,14 @@ export const setupEmojis = () => dispatch => {
 };
 
 export const setNewEmoji = () => {
-  const randomCodepoint = Math.floor(Math.random() * (maxCodepoint - minCodepoint) + minCodepoint);
+  const randomId = Math.floor(Math.random() * 90);
   return {
     type: types.SET_NEW,
-    payload: randomCodepoint
+    payload: randomId
   }
 };
 
 export const setFirstEmoji = () => ({
   type: types.SET_NEW,
-  payload: Emojis[0].codepoint
+  payload: 4
 });

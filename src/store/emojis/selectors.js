@@ -1,6 +1,6 @@
 export const getSelectedEmoji = (state) =>
-  state.emojis.byId[state.emojis.selectedEmojiCP] || { codepoint: state.emojis.selectedEmojiCP, notFound: true };
+  state.emojis.byId[state.emojis.selectedEmojiId] || { id: state.emojis.selectedEmojiId, notFound: true };
 
-export const getPreviousEmojis = (state) => state.emojis.previousEmojisCPs.map((codepoint) =>
-  state.emojis.byId[codepoint] || { codepoint, notFound: true });
+export const getPreviousEmojis = (state) => state.emojis.previousEmojisIds.map((id) =>
+  state.emojis.byId[id] || { id, notFound: true });
 

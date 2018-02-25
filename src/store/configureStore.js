@@ -8,6 +8,8 @@ import { loadRegistrationStatus } from '../utils/localStorage';
 const rootReducer = combineReducers({
   registration,
   emojis,
+  jokes,
+  draws
 });
 
 const initialState = {
