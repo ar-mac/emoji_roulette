@@ -279,7 +279,7 @@
 
 ------
 
-### Done during CoderDojo at 22-Feb-2018 - LocalStorage, Redux-Thunk middleware and fetch
+### Done during CoderDojo at 22-Feb-2018 - LocalStorage, Redux-Thunk middleware and fetch app internal data
 
 #### Steps
 * Add redux thunk [package](https://github.com/gaearon/redux-thunk#installation)
@@ -299,23 +299,47 @@
 * Migrate user login to thunk
   * Make a call to the json-server to persist user provided data
   * Save userId into `localStorage`
-* Add saving of history for user
-  * User account stored in the json-server should have `selectedEmojiCP` and `previousEmojisCPs` properties
-  * When new emoji is picked up, store it and emoji history in the backend
-  * On user authentication, populate the store with user related emoji data  
-* Add [Chuck Norris jokes](https://api.chucknorris.io/) so emoji displays reaction to given joke
-  * Add `store/jokes` folder with `reducer`, `actionCreators`
-  * Create `getNewJoke` AC which calls Chuck Norris api and returns promise with it's response
-  * 
-  * Add `store/reactions` folder with only `actionCreators` file
-  * Create `setNewReaction` AC which calls `setNewEmoji` and `setNewJoke`
 
 #### Materials
 [list of free apis](https://github.com/toddmotto/public-apis#personality)
 
 ------
 
-### Redux thunk
+### Done during CoderDojo at 15-Mar-2018 - Redux-Thunk middleware, fetch 
+
+* Add jokes resource holding available jokes
+  * Add `store/jokes` folder with `reducer`, `actionCreators`
+   
+* Add Draw resource joining joke and emoji
+  * Add `store/draws` folder with `reducer`, `actionCreators`, `types`, `selectors`
+  * Draw should have 3 properties `jokeId`, `emojiId`, `id` (generated with `Date.now()`)
+
+* Implement `setNewDraw` in `store/draws/actionCreators` fetching random joke and emoji
+  * Create `getRandomJoke` in `store/jokes/actionCreators` AC which calls [Chuck Norris API](https://api.chucknorris.io/) 
+    and returns promise with it's response
+  * Create `getRandomEmoji` in `store/emojis/actionCreators` which draws random emoji ID and fetches given emoji from DB 
+  * Call `getRandomJoke` in `setNewDraw` and get data from promise
+  * Call `getRandomEmoji` in `setNewDraw` and get data from promise
+  * When both promises resolve build `draws/SET_NEW` action
+  * Reducers for `draw`, `emoji` and `joke` should handle `draws/SET_NEW` action accordingly by saving pieces of data
+
+* Implement saving history of last 5 draws in LocalStorage
+  * When adding new Draw, get currently stored history of draws and add new one [use getState from redux-thunk](https://github.com/gaearon/redux-thunk#motivation)
+  * Implement `utils/LocalStorage` methods to handle saving/loading `isRegistered` and `draws` under one key `userData`
+    * When user logs out `userData` should be cleared out
+  * Save updated history in LocalStorage `draws`
+  * Emit updated history in action payload
+  * Update `draw/reducer` handling to assign new draw to history
+
+* Implement initial Draw loading
+  * Remove `setupEmojis` action creator so emojis are not fully populated on the beginning
+  * Replace `setupEmojis` with `setupDraws` in `Roulette#componentDidMount`
+  * Add `setupDraws` action creator
+  * Fetch draws history from LocalStorage
+  * For all jokeIds call ChuckNorris API
+  * For all emojis call backend
+  * When all promises resolve create `draws/SETUP` action
+  * Reducers for `draw`, `emoji` and `joke` should handle `draws/SETUP` action accordingly by saving pieces of data
 
 ### Testing redux and middleware
 

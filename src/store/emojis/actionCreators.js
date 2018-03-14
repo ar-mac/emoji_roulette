@@ -1,5 +1,4 @@
 import * as types from './types';
-import { Emojis } from '../../emojis';
 
 export const setupEmojis = () => dispatch => {
   fetch('http://localhost:3001/emojis').then((response) => response.json()).then(emojis => {

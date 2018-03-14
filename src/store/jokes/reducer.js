@@ -17,4 +17,4 @@ function jokesReducer(state = initialState, action) {
   }
 }
 
-export default emojisReducer;
+export default jokesReducer;
