@@ -41,13 +41,13 @@ class Roulette extends Component {
         {
           (selectedEmoji.notFound)
             ? <NoEmojiWithTimer
-              key={selectedEmoji.codepoint}
-              codepoint={selectedEmoji.codepoint}
+              key={selectedEmoji.id}
+              id={selectedEmoji.id}
               resetTime={resetTime}
               resetHandler={this.getRandomEmoji}
             />
             : <DisplayEmojiWithTimer
-              key={selectedEmoji.codepoint}
+              key={selectedEmoji.id}
               emoji={selectedEmoji}
               clearIndex={this.clearIndex}
               resetTime={resetTime}
@@ -56,10 +56,11 @@ class Roulette extends Component {
         }
         <hr />
         {
-          previousEmojis.slice(1, 6).map((emoji) => {
+          previousEmojis.slice(1, 6).map((emoji, index) => {
+            const key = `${index}${emoji.id}`;
             return (emoji.notFound)
-              ? <NoEmojiMessage key={emoji.codepoint} codepoint={emoji.codepoint} />
-              : <DisplayEmoji key={emoji.codepoint} emoji={emoji} />;
+              ? <NoEmojiMessage key={key} id={emoji.id} />
+              : <DisplayEmoji key={key} emoji={emoji} />;
           })
         }
       </div>

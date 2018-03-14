@@ -20,3 +20,8 @@ input {
 img {
   height: 30px;
 }
+
+.logout {
+  justify-content: flex-end;
+  display: flex;
+}
