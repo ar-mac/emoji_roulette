@@ -11,6 +11,15 @@ function jokesReducer(state = initialState, action) {
         ...state
       };
     }
+    case 'draws/SET_NEW': {
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.payload.joke.id]: action.payload.joke,
+        }
+      }
+    }
     default: {
       return state;
     }

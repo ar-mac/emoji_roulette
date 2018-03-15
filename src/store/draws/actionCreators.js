@@ -14,10 +14,14 @@ export const setNewDraw = () => dispatch => {
   Promise.all([
     getRandomJoke(),
     getRandomEmoji(),
-  ]).then((data) => {
-    console.log(`data: `, data);
-    dispatch({type: 'test', payload: data})
-  })
+  ]).then(([joke, emoji]) => {
+    const draw = {
+      id: Date.now(),
+      jokeId: joke.id,
+      emojiId: emoji.id,
+    };
+    dispatch({ type: 'draws/SET_NEW', payload: {draw, joke, emoji} })
+  });
 
 //  fetch random joke
 //  select random emoji id and fetch it unless already saved in store
