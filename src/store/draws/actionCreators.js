@@ -1,4 +1,6 @@
 import * as types from './types';
+import { getRandomJoke } from '../jokes/actionCreators';
+import { getRandomEmoji } from '../emojis/actionCreators';
 
 export const setupDraws = () => dispatch => {
 //  getDraws from local storage
@@ -8,7 +10,15 @@ export const setupDraws = () => dispatch => {
 //  in reducers for emojis, jokes and draws implement handling for that action
 };
 
-export const setNewDraw = () => {
+export const setNewDraw = () => dispatch => {
+  Promise.all([
+    getRandomJoke(),
+    getRandomEmoji(),
+  ]).then((data) => {
+    console.log(`data: `, data);
+    dispatch({type: 'test', payload: data})
+  })
+
 //  fetch random joke
 //  select random emoji id and fetch it unless already saved in store
 //  emit draws/SET_NEW action containing all fetched data

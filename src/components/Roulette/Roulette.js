@@ -5,6 +5,7 @@ import PropTypes from 'proptypes';
 import DisplayEmojiWithTimer, { DisplayEmoji } from './DisplayEmoji';
 import NoEmojiWithTimer, { NoEmojiMessage } from './NoEmojiMessage';
 import { setupEmojis, setNewEmoji, setFirstEmoji } from '../../store/emojis/actionCreators';
+import { setNewDraw } from '../../store/draws/actionCreators';
 import { getSelectedEmoji, getPreviousEmojis } from '../../store/emojis/selectors';
 
 class Roulette extends Component {
@@ -21,7 +22,7 @@ class Roulette extends Component {
   };
 
   getRandomEmoji = () => {
-    this.props.setNewEmoji();
+    this.props.setNewDraw();
   };
 
   handleChange = ({ target: { value: resetTime } }) => {
@@ -72,7 +73,7 @@ Roulette.propTypes = {
   selectedEmoji: PropTypes.object.isRequired,
   previousEmojis: PropTypes.array.isRequired,
   setupEmojis: PropTypes.func.isRequired,
-  setNewEmoji: PropTypes.func.isRequired,
+  setNewDraw: PropTypes.func.isRequired,
   setFirstEmoji: PropTypes.func.isRequired,
 };
 
@@ -83,7 +84,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   setupEmojis,
-  setNewEmoji,
+  setNewDraw,
   setFirstEmoji,
 };
 
