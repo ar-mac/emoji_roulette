@@ -1,4 +1,5 @@
 import * as types from './types';
+import * as drawTypes from '../draws/types';
 
 const initialState = {
   byId: {}
@@ -6,12 +7,7 @@ const initialState = {
 
 function jokesReducer(state = initialState, action) {
   switch (action.type) {
-    case types.SET_NEW: {
-      return {
-        ...state
-      };
-    }
-    case 'draws/SET_NEW': {
+    case drawTypes.SET_NEW: {
       return {
         ...state,
         byId: {

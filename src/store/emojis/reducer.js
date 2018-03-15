@@ -1,4 +1,5 @@
 import * as types from './types';
+import * as drawTypes from '../draws/types';
 
 const initialState = {
   byId: {},
@@ -15,7 +16,7 @@ function emojisReducer(state = initialState, action) {
         previousEmojisIds: [action.payload, ...state.previousEmojisIds].slice(0, 9)
       };
     }
-    case 'draws/SET_NEW': {
+    case drawTypes.SET_NEW: {
       return {
         ...state,
         byId: {

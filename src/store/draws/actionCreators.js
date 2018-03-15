@@ -20,7 +20,7 @@ export const setNewDraw = () => dispatch => {
       jokeId: joke.id,
       emojiId: emoji.id,
     };
-    dispatch({ type: 'draws/SET_NEW', payload: {draw, joke, emoji} })
+    dispatch({ type: 'draws/SET_NEW', payload: { draw, joke, emoji } })
   });
 
 //  fetch random joke

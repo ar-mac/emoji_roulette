@@ -6,7 +6,7 @@ const initialState = {
 
 function drawReducer(state = initialState, action) {
   switch (action.type) {
-    case 'draws/SET_NEW': {
+    case types.SET_NEW: {
       return {
         ...state,
         byId: {
