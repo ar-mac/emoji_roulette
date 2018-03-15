@@ -1,3 +1,3 @@
-export const getJoke = (id) =>
+export const getJokeById = (state, id) =>
   state.jokes.byId[id] || { id,  value: '' };
 

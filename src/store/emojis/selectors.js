@@ -4,3 +4,5 @@ export const getSelectedEmoji = (state) =>
 export const getPreviousEmojis = (state) => state.emojis.previousEmojisIds.map((id) =>
   state.emojis.byId[id] || { id, notFound: true });
 
+export const getEmojiById = (state, id) =>
+  state.emojis.byId[id] || {};

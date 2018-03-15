@@ -11,6 +11,7 @@ export const setupDraws = () => dispatch => {
 };
 
 export const setNewDraw = () => dispatch => {
+
   Promise.all([
     getRandomJoke(),
     getRandomEmoji(),
