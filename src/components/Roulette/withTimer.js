@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 
-export const withTimer = (WrappedComponent) => {
+export const withTimer = (url) => (WrappedComponent) => {
   class WithTimer extends Component {
-    state = {
-      secondsPassed: 0,
-    };
+    constructor(props, context) {
+      super(props, context);
+
+      this.state = {
+        secondsPassed: 0,
+      }
+      this.resourceFetcher = resourceFetcher(url)
+    }
 
     componentDidMount() {
       this.intervalId = setInterval(() => {
@@ -29,6 +34,7 @@ export const withTimer = (WrappedComponent) => {
       return <WrappedComponent
         {...subProps}
         secondsPassed={this.state.secondsPassed}
+        resourceFetcher={this.resourceFetcher}
       />
     }
   }

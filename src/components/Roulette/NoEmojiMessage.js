@@ -3,7 +3,7 @@ import PropTypes from 'proptypes';
 
 import { withTimer } from './withTimer';
 
-export const NoEmojiMessage = ({id, secondsPassed}) => (
+export const NoEmojiMessage = ({id, secondsPassed, resourceFetcher}) => (
   <div className="emoji-card">
     <div className="emoji-card__head">
       {secondsPassed >= 0 && <div>secondsPassed: {secondsPassed}</div>}
@@ -19,5 +19,8 @@ NoEmojiMessage.propTypes = {
   secondsPassed: PropTypes.number,
 };
 
-export default withTimer(NoEmojiMessage);
+export default withTimer({
+  url: 'resource',
+
+})(NoEmojiMessage);
 
