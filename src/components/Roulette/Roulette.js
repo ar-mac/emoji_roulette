@@ -5,25 +5,15 @@ import { get } from 'lodash';
 
 import DisplayEmojiWithTimer, { DisplayEmoji } from './DisplayEmoji';
 import NoEmojiWithTimer, { NoEmojiMessage } from './NoEmojiMessage';
-import { setupEmojis, setNewEmoji, setFirstEmoji } from '../../store/emojis/actionCreators';
 import { setNewDraw } from '../../store/draws/actionCreators';
-import { getSelectedEmoji, getPreviousEmojis } from '../../store/emojis/selectors';
-import { getSelectedDraw } from '../../store/draws/selectors';
+import { getSelectedDraw, getPreviousDraws } from '../../store/draws/selectors';
 
 class Roulette extends Component {
   state = {
-    resetTime: 2,
+    resetTime: 6,
   };
-
-  componentDidMount() {
-    this.props.setupEmojis();
-  }
 
   clearIndex = () => {
-    this.props.setFirstEmoji();
-  };
-
-  getRandomEmoji = () => {
     this.props.setNewDraw();
   };
 
@@ -34,38 +24,38 @@ class Roulette extends Component {
   };
 
   render() {
-    const { selectedEmoji, previousEmojis, selectedDraw } = this.props;
+    const { previousDraws, selectedDraw, setNewDraw } = this.props;
     const { resetTime } = this.state;
 
     return (
       <div className="Roulette">
-        {JSON.stringify(selectedDraw)}
-        <button onClick={this.getRandomEmoji}>Get new emoji</button>
+        <button onClick={setNewDraw}>Get new joke and reaction</button>
         <div><input type="text" onChange={this.handleChange} defaultValue={resetTime} /></div>
         {
-          (!get(selectedDraw, 'emoji.id'))
-            ? <NoEmojiWithTimer
-              key={selectedEmoji.id}
-              id={selectedEmoji.id}
-              resetTime={resetTime}
-              resetHandler={this.getRandomEmoji}
-            />
-            : <DisplayEmojiWithTimer
-              key={selectedEmoji.id}
-              emoji={selectedDraw.emoji}
-              joke={selectedDraw.joke}
+          (get(selectedDraw, 'emoji.id'))
+            ? <DisplayEmojiWithTimer
+              key={selectedDraw.id}
+              draw={selectedDraw}
               clearIndex={this.clearIndex}
               resetTime={resetTime}
-              resetHandler={this.getRandomEmoji}
+              resetHandler={setNewDraw}
+            />
+            : <NoEmojiWithTimer
+              key={selectedDraw.id}
+              draw={selectedDraw}
+              resetTime={resetTime}
+              resetHandler={setNewDraw}
             />
         }
         <hr />
         {
-          previousEmojis.slice(1, 6).map((emoji, index) => {
-            const key = `${index}${emoji.id}`;
-            return (emoji.notFound)
-              ? <NoEmojiMessage key={key} id={emoji.id} />
-              : <DisplayEmoji key={key} emoji={emoji} />;
+          previousDraws.slice(1, 6).map((draw, index) => {
+            if (draw.notFound) return null;
+
+            const key = `${index}${draw.id}`;
+            return (get(draw, 'emoji.id'))
+              ? <DisplayEmoji key={key} draw={draw} />
+              : <NoEmojiMessage key={key} draw={draw} />;
           })
         }
       </div>
@@ -74,24 +64,18 @@ class Roulette extends Component {
 }
 
 Roulette.propTypes = {
-  selectedEmoji: PropTypes.object.isRequired,
-  previousEmojis: PropTypes.array.isRequired,
+  previousDraws: PropTypes.array.isRequired,
   selectedDraw: PropTypes.object.isRequired,
-  setupEmojis: PropTypes.func.isRequired,
   setNewDraw: PropTypes.func.isRequired,
-  setFirstEmoji: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  selectedEmoji: getSelectedEmoji(state),
-  previousEmojis: getPreviousEmojis(state),
+  previousDraws: getPreviousDraws(state),
   selectedDraw: getSelectedDraw(state),
 });
 
 const mapDispatchToProps = {
-  setupEmojis,
   setNewDraw,
-  setFirstEmoji,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Roulette);
