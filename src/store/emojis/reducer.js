@@ -1,21 +1,11 @@
-import * as types from './types';
 import * as drawTypes from '../draws/types';
 
 const initialState = {
   byId: {},
-  selectedEmojiId: 4,
-  previousEmojisIds: [4],
 };
 
 function emojisReducer(state = initialState, action) {
   switch (action.type) {
-    case types.SET_NEW: {
-      return {
-        ...state,
-        selectedEmojiId: action.payload,
-        previousEmojisIds: [action.payload, ...state.previousEmojisIds].slice(0, 9)
-      };
-    }
     case drawTypes.SET_NEW: {
       return {
         ...state,

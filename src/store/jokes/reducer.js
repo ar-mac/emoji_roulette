@@ -1,4 +1,3 @@
-import * as types from './types';
 import * as drawTypes from '../draws/types';
 
 const initialState = {
