@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'proptypes';
+import { get } from 'lodash';
 
 import DisplayEmojiWithTimer, { DisplayEmoji } from './DisplayEmoji';
 import NoEmojiWithTimer, { NoEmojiMessage } from './NoEmojiMessage';
 import { setupEmojis, setNewEmoji, setFirstEmoji } from '../../store/emojis/actionCreators';
+import { setNewDraw } from '../../store/draws/actionCreators';
 import { getSelectedEmoji, getPreviousEmojis } from '../../store/emojis/selectors';
+import { getSelectedDraw } from '../../store/draws/selectors';
 
 class Roulette extends Component {
   state = {
@@ -21,7 +24,7 @@ class Roulette extends Component {
   };
 
   getRandomEmoji = () => {
-    this.props.setNewEmoji();
+    this.props.setNewDraw();
   };
 
   handleChange = ({ target: { value: resetTime } }) => {
@@ -31,15 +34,16 @@ class Roulette extends Component {
   };
 
   render() {
-    const { selectedEmoji, previousEmojis } = this.props;
+    const { selectedEmoji, previousEmojis, selectedDraw } = this.props;
     const { resetTime } = this.state;
 
     return (
       <div className="Roulette">
+        {JSON.stringify(selectedDraw)}
         <button onClick={this.getRandomEmoji}>Get new emoji</button>
         <div><input type="text" onChange={this.handleChange} defaultValue={resetTime} /></div>
         {
-          (selectedEmoji.notFound)
+          (!get(selectedDraw, 'emoji.id'))
             ? <NoEmojiWithTimer
               key={selectedEmoji.id}
               id={selectedEmoji.id}
@@ -48,7 +52,8 @@ class Roulette extends Component {
             />
             : <DisplayEmojiWithTimer
               key={selectedEmoji.id}
-              emoji={selectedEmoji}
+              emoji={selectedDraw.emoji}
+              joke={selectedDraw.joke}
               clearIndex={this.clearIndex}
               resetTime={resetTime}
               resetHandler={this.getRandomEmoji}
@@ -71,19 +76,21 @@ class Roulette extends Component {
 Roulette.propTypes = {
   selectedEmoji: PropTypes.object.isRequired,
   previousEmojis: PropTypes.array.isRequired,
+  selectedDraw: PropTypes.object.isRequired,
   setupEmojis: PropTypes.func.isRequired,
-  setNewEmoji: PropTypes.func.isRequired,
+  setNewDraw: PropTypes.func.isRequired,
   setFirstEmoji: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   selectedEmoji: getSelectedEmoji(state),
   previousEmojis: getPreviousEmojis(state),
+  selectedDraw: getSelectedDraw(state),
 });
 
 const mapDispatchToProps = {
   setupEmojis,
-  setNewEmoji,
+  setNewDraw,
   setFirstEmoji,
 };
 
