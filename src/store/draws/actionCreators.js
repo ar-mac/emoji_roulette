@@ -11,7 +11,6 @@ export const setupDraws = () => dispatch => {
 };
 
 export const setNewDraw = () => dispatch => {
-
   Promise.all([
     getRandomJoke(),
     getRandomEmoji(),
@@ -21,12 +20,6 @@ export const setNewDraw = () => dispatch => {
       jokeId: joke.id,
       emojiId: emoji.id,
     };
-    dispatch({ type: 'draws/SET_NEW', payload: { draw, joke, emoji } })
+    dispatch({ type: types.SET_NEW, payload: { draw, joke, emoji } })
   });
-
-//  fetch random joke
-//  select random emoji id and fetch it unless already saved in store
-//  emit draws/SET_NEW action containing all fetched data
-//  in reducers for emojis, jokes and draws implement handling for that action
-//  save new draw to history of draws stored in LS
 };

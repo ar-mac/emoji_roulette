@@ -323,6 +323,10 @@
   * When both promises resolve build `draws/SET_NEW` action
   * Reducers for `draw`, `emoji` and `joke` should handle `draws/SET_NEW` action accordingly by saving pieces of data
 
+------
+
+### Done during CoderDojo at 28-Mar-2018 - Redux-Thunk middleware, fetch
+
 * Implement saving history of last 5 draws in LocalStorage
   * When adding new Draw, get currently stored history of draws and add new one [use getState from redux-thunk](https://github.com/gaearon/redux-thunk#motivation)
   * Implement `utils/LocalStorage` methods to handle saving/loading `isRegistered` and `draws` under one key `userData`
@@ -332,8 +336,7 @@
   * Update `draw/reducer` handling to assign new draw to history
 
 * Implement initial Draw loading
-  * Remove `setupEmojis` action creator so emojis are not fully populated on the beginning
-  * Replace `setupEmojis` with `setupDraws` in `Roulette#componentDidMount`
+  * Implement `setupDraws` in `Roulette#componentDidMount`
   * Add `setupDraws` action creator
   * Fetch draws history from LocalStorage
   * For all jokeIds call ChuckNorris API
