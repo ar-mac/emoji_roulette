@@ -6,7 +6,7 @@ import { withTimer } from './withTimer';
 
 export class DisplayEmoji extends Component {
   render() {
-    const { clearIndex, secondsPassed, emoji, joke } = this.props;
+    const { secondsPassed, draw: { emoji, joke } } = this.props;
     const twemojiMarkup = {
       __html: twemoji.parse(emoji.emojiIcon)
     };
@@ -15,13 +15,12 @@ export class DisplayEmoji extends Component {
       <div className="emoji-card">
         <div className="emoji-card__head">
           {secondsPassed >= 0 && <div>secondsPassed: {secondsPassed}</div>}
-          {!!clearIndex && <div><button onClick={clearIndex}>Clear index</button></div>}
         </div>
         <div className="emoji-card__body">
           <div>emoji: {emoji.emojiIcon}</div>
           <div>code: {emoji.codepoint}</div>
           <div>parsed: {String.fromCodePoint(emoji.codepoint)}</div>
-          <div>twemoji: <div dangerouslySetInnerHTML={twemojiMarkup}/></div>
+          <div>twemoji: <div dangerouslySetInnerHTML={twemojiMarkup} /></div>
           <hr />
           <div>joke: {joke.value}</div>
         </div>
@@ -31,10 +30,20 @@ export class DisplayEmoji extends Component {
 }
 
 DisplayEmoji.propTypes = {
-  clearIndex: PropTypes.func,
   secondsPassed: PropTypes.number,
-  emoji: PropTypes.object,
-  joke: PropTypes.object
+  draw: PropTypes.shape({
+    emoji: PropTypes.shape({
+      id: PropTypes.number,
+      codepoint: PropTypes.number,
+      emojiIcon: PropTypes.string,
+    }),
+    joke: PropTypes.shape({
+      icon_url: PropTypes.string,
+      id: PropTypes.string,
+      url: PropTypes.string,
+      value: PropTypes.string,
+    })
+  })
 };
 
 export default withTimer(DisplayEmoji);
