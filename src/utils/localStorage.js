@@ -4,8 +4,8 @@ export const loadRegistrationStatus = () => {
     } catch (err) {
         console.error('Can\'t load registration status', err);
     }
-}
+};
 
-export const saveRegistrationStatus = (isRegistered) => {
-    localStorage.setItem('isRegistered', isRegistered);
-}
+export const saveToLocalStorage = (key, data) => {
+  localStorage.setItem(key, JSON.stringify(data));
+};

@@ -1,6 +1,7 @@
 import * as types from './types';
 import { getRandomJoke } from '../jokes/actionCreators';
 import { getRandomEmoji } from '../emojis/actionCreators';
+import { saveToLocalStorage } from '../../utils/localStorage';
 
 export const setupDraws = () => dispatch => {
 //  getDraws from local storage
@@ -10,7 +11,7 @@ export const setupDraws = () => dispatch => {
 //  in reducers for emojis, jokes and draws implement handling for that action
 };
 
-export const setNewDraw = () => dispatch => {
+export const setNewDraw = () => (dispatch, getState) => {
   Promise.all([
     getRandomJoke(),
     getRandomEmoji(),
@@ -20,6 +21,7 @@ export const setNewDraw = () => dispatch => {
       jokeId: joke.id,
       emojiId: emoji.id,
     };
+    saveToLocalStorage('draws', getState().draws);
     dispatch({ type: types.SET_NEW, payload: { draw, joke, emoji } })
   });
 };
