@@ -8,5 +8,6 @@ export const login = () => dispatch => {
 
 export const logout = () => dispatch => {
   saveToLocalStorage('isRegistered', false);
+  saveToLocalStorage('draws', {});
   dispatch({type: types.LOGOUT})
 };
