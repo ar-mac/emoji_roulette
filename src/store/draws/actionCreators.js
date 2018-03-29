@@ -2,7 +2,7 @@ import * as types from './types';
 import { getRandomJoke } from '../jokes/actionCreators';
 import { getRandomEmoji } from '../emojis/actionCreators';
 import { saveToLocalStorage } from '../../utils/localStorage';
-
+import drawsReducer from './reducer';
 export const setupDraws = () => dispatch => {
 //  getDraws from local storage
 //  for every draw call jokes/actionCreators getJoke to fetch jokes
@@ -21,7 +21,13 @@ export const setNewDraw = () => (dispatch, getState) => {
       jokeId: joke.id,
       emojiId: emoji.id,
     };
-    saveToLocalStorage('draws', getState().draws);
-    dispatch({ type: types.SET_NEW, payload: { draw, joke, emoji } })
+
+    // not the best possible solution, but with redux-thunk
+    // we do not have possibility to react after state changes
+    const action = { type: types.SET_NEW, payload: { draw, joke, emoji } };
+    const newDrawsState = drawsReducer(getState().draws, action);
+    saveToLocalStorage('draws', newDrawsState);
+
+    dispatch(action)
   });
 };
