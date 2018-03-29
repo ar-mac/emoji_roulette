@@ -1,8 +1,8 @@
-export const loadRegistrationStatus = () => {
+export const loadDataFromLocalStorage = (key) => {
     try {
-        return JSON.parse(localStorage.getItem('isRegistered'));      
+        return JSON.parse(localStorage.getItem(key));      
     } catch (err) {
-        console.error('Can\'t load registration status', err);
+        console.error('Can\'t load data', err);
     }
 };
 

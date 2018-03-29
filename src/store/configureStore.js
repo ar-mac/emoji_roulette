@@ -5,7 +5,7 @@ import registration from './registration/reducer';
 import emojis from './emojis/reducer';
 import jokes from './jokes/reducer';
 import draws from './draws/reducer';
-import { loadRegistrationStatus } from '../utils/localStorage';
+import { loadDataFromLocalStorage } from '../utils/localStorage';
 
 const rootReducer = combineReducers({
   registration,
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
 
 const initialState = {
   registration: {
-    isRegistered: loadRegistrationStatus(),
+    isRegistered: loadDataFromLocalStorage('isRegistered'),
   }
 };
 
