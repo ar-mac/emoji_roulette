@@ -335,16 +335,19 @@
   * Emit updated history in action payload
   * Update `draw/reducer` handling to assign new draw to history
 
+### Done during CoderDojo at 24-May-2018 - Redux-Thunk middleware & Testing Redux
+
 * Implement initial Draw loading
   * Implement `setupDraws` in `Roulette#componentDidMount`
   * Add `setupDraws` action creator
   * Fetch draws history from LocalStorage
-  * For all jokeIds call ChuckNorris API
-  * For all emojis call backend
+  * For every jokeId call ChuckNorris API and fetch them
+  * For all emojis call backend and fetch all required emojis with one request
   * When all promises resolve create `draws/SETUP` action
   * Reducers for `draw`, `emoji` and `joke` should handle `draws/SETUP` action accordingly by saving pieces of data
 
-### Testing redux and middleware
+* Test action creators, reducers and selectors
+  * For emojis, jokes, draws and registration
 
 ### React 16 differences and new things
 
