@@ -1,12 +1,13 @@
 import * as types from './types';
-import { saveRegistrationStatus } from '../../utils/localStorage';
+import { saveToLocalStorage } from '../../utils/localStorage';
 
 export const login = () => dispatch => {
-  saveRegistrationStatus(true)  
+  saveToLocalStorage('isRegistered', true);
   dispatch({type: types.LOGIN})
 };
 
 export const logout = () => dispatch => {
-  saveRegistrationStatus(false)
+  saveToLocalStorage('isRegistered', false);
+  saveToLocalStorage('draws', {});
   dispatch({type: types.LOGOUT})
 };

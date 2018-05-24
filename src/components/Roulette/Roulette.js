@@ -5,13 +5,17 @@ import { get } from 'lodash';
 
 import DisplayEmojiWithTimer, { DisplayEmoji } from './DisplayEmoji';
 import NoEmojiWithTimer, { NoEmojiMessage } from './NoEmojiMessage';
-import { setNewDraw } from '../../store/draws/actionCreators';
+import { setNewDraw, setupDraws } from '../../store/draws/actionCreators';
 import { getSelectedDraw, getPreviousDraws } from '../../store/draws/selectors';
 
 class Roulette extends Component {
   state = {
     resetTime: 6,
   };
+
+  componentWillMount = () => {
+    this.props.setupDraws();
+  }
 
   clearIndex = () => {
     this.props.setNewDraw();
@@ -67,6 +71,7 @@ Roulette.propTypes = {
   previousDraws: PropTypes.array.isRequired,
   selectedDraw: PropTypes.object.isRequired,
   setNewDraw: PropTypes.func.isRequired,
+  setupDraws: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -75,6 +80,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
+  setupDraws,
   setNewDraw,
 };
 

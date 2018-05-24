@@ -329,8 +329,8 @@
 
 * Implement saving history of last 5 draws in LocalStorage
   * When adding new Draw, get currently stored history of draws and add new one [use getState from redux-thunk](https://github.com/gaearon/redux-thunk#motivation)
-  * Implement `utils/LocalStorage` methods to handle saving/loading `isRegistered` and `draws` under one key `userData`
-    * When user logs out `userData` should be cleared out
+  * Implement `utils/LocalStorage` methods to handle saving/loading `isRegistered` and `draws`
+    * When user logs out `draws` should be cleared out
   * Save updated history in LocalStorage `draws`
   * Emit updated history in action payload
   * Update `draw/reducer` handling to assign new draw to history
