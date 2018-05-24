@@ -3,6 +3,7 @@ import { getRandomJoke, getJokes } from '../jokes/actionCreators';
 import { getRandomEmoji, getEmojis } from '../emojis/actionCreators';
 import { saveToLocalStorage, loadDataFromLocalStorage } from '../../utils/localStorage';
 import drawsReducer from './reducer';
+import { filter } from 'lodash';
 
 
 export const setupDraws = () => dispatch => {
@@ -38,8 +39,8 @@ export const setNewDraw = () => (dispatch, getState) => {
     // we do not have possibility to react after state changes
     const action = { type: types.SET_NEW, payload: { draw, joke, emoji } };
     const newDrawsState = drawsReducer(getState().draws, action);
+    newDrawsState.byId = filter(newDrawsState.byId, draw => newDrawsState.previousDrawIds.includes(draw.id))
     saveToLocalStorage('draws', newDrawsState);
-
     dispatch(action)
   });
 };

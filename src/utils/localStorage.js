@@ -7,5 +7,6 @@ export const loadDataFromLocalStorage = (key) => {
 };
 
 export const saveToLocalStorage = (key, data) => {
+  console.log(key, data, 'Zmiana')
   localStorage.setItem(key, JSON.stringify(data));
 };
