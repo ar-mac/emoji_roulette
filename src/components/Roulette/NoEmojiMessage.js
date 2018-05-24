@@ -10,9 +10,9 @@ export const NoEmojiMessage = ({draw, secondsPassed}) => (
     </div>
     <div className="emoji-card__body">
       <div>Draw id: {draw.id}</div>
-      <div>No reaction for drawn joke 😐</div>
-      <hr />
       <div>joke: {draw.joke.value}</div>
+      <hr />
+      <div>No reaction for drawn joke 😐</div>
     </div>
   </div>
 );

@@ -17,12 +17,9 @@ export class DisplayEmoji extends Component {
           {secondsPassed >= 0 && <div>secondsPassed: {secondsPassed}</div>}
         </div>
         <div className="emoji-card__body">
-          <div>emoji: {emoji.emojiIcon}</div>
-          <div>code: {emoji.codepoint}</div>
-          <div>parsed: {String.fromCodePoint(emoji.codepoint)}</div>
-          <div>twemoji: <div dangerouslySetInnerHTML={twemojiMarkup} /></div>
-          <hr />
           <div>joke: {joke.value}</div>
+          <hr />
+          <div>reaction: <div dangerouslySetInnerHTML={twemojiMarkup} /></div>
         </div>
       </div>
     )

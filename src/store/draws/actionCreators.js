@@ -1,13 +1,18 @@
 import * as types from './types';
 import { getRandomJoke } from '../jokes/actionCreators';
 import { getRandomEmoji } from '../emojis/actionCreators';
-import { saveToLocalStorage ,loadDataFromLocalStorage } from '../../utils/localStorage';
+import { saveToLocalStorage, loadDataFromLocalStorage } from '../../utils/localStorage';
 import drawsReducer from './reducer';
 
 
 export const setupDraws = () => dispatch => {
   const data = loadDataFromLocalStorage('draws');
   console.log(data);
+  //  getDraws from local storage
+  //  for every draw call jokes/actionCreators getJoke to fetch jokes
+  //  for emojis call emojis/actionCreators getEmojis to fetch all emojis at once
+  //  when all promises resolve, emit draws/SETUP which contains all data to store
+  //  in reducers for emojis, jokes and draws implement handling for that action
 };
 
 export const setNewDraw = () => (dispatch, getState) => {

@@ -10,6 +10,8 @@ const buildDraw = (state, drawId) => {
   }
 };
 
-export const getSelectedDraw = (state) => buildDraw(state, state.draws.selectedDrawId);
+export const getSelectedDraw = (state) =>
+  buildDraw(state, state.draws.selectedDrawId);
 
-export const getPreviousDraws = (state) => state.draws.previousDrawIds.map((drawId) => buildDraw(state, drawId));
+export const getPreviousDraws = (state) =>
+  state.draws.previousDrawIds.map((drawId) => buildDraw(state, drawId));
