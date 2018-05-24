@@ -3,8 +3,9 @@ export const getRandomEmoji = () => {
   return fetch(`http://localhost:3001/emojis/${randomId}`).then((response) => response.json())
 };
 
-export const getEmojis = () => {
-//  implement action creator for fetching emojis with specific IDs
-//  it's needed for `setupDraws` action creator
-//  hint: check json-server documentation how to fetch multiple emojis with provided ids with one request
+export const getEmojis = (ids) => {
+  const requests = ids.map(id => id ? getEmoji(id) : {})
+  return Promise.all(requests)
 };
+
+export const getEmoji = id => fetch(`http://localhost:3001/emojis/${id}`).then(emoji => emoji.json())
