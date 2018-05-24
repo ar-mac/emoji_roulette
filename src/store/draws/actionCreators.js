@@ -1,5 +1,5 @@
 import * as types from './types';
-import { getRandomJoke } from '../jokes/actionCreators';
+import { getRandomJoke, getJokes } from '../jokes/actionCreators';
 import { getRandomEmoji, getEmojis } from '../emojis/actionCreators';
 import { saveToLocalStorage, loadDataFromLocalStorage } from '../../utils/localStorage';
 import drawsReducer from './reducer';
@@ -13,11 +13,13 @@ export const setupDraws = () => dispatch => {
   //  when all promises resolve, emit draws/SETUP which contains all data to store
   //  in reducers for emojis, jokes and draws implement handling for that action
   if(data) {
-    const emojiIds = Object.values(data.byId).map(draw => draw.emojiId);
-
+    const emojiIds = Object.values(data.byId).map(({ emojiId }) => emojiId);
+    const jokeIds = Object.values(data.byId).map(({ jokeId }) => jokeId);
+    
     Promise.all([
-      getEmojis(emojiIds)
-    ]).then(([ emojisResponses ]) => console.log(emojisResponses))
+      getEmojis(emojiIds),
+      getJokes(jokeIds)
+    ]).then(([ emojisResponses, jokesResponses ]) => console.log(emojisResponses, jokesResponses))
   }
 }
 
