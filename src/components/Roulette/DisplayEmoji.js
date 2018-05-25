@@ -5,6 +5,13 @@ import PropTypes from 'proptypes';
 import { withTimer } from './withTimer';
 
 export class DisplayEmoji extends Component {
+  readJoke = e => {
+    e.preventDefault();
+    this.props.stopTimer();
+    var msg = new SpeechSynthesisUtterance(`${this.props.draw.joke.value} reaction: ${this.props.draw.emoji.emojiIcon}`);
+    window.speechSynthesis.speak(msg);
+    msg.onend = () => this.props.startTimer();
+  }
   render() {
     const { secondsPassed, draw: { emoji, joke } } = this.props;
     const twemojiMarkup = {
@@ -16,6 +23,9 @@ export class DisplayEmoji extends Component {
         <div className="emoji-card__head">
           {secondsPassed >= 0 && <div>secondsPassed: {secondsPassed}</div>}
         </div>
+        <button onClick={this.readJoke}>
+          read joke
+        </button>
         <div className="emoji-card__body">
           <div>joke: {joke.value}</div>
           <hr />
@@ -40,7 +50,9 @@ DisplayEmoji.propTypes = {
       url: PropTypes.string,
       value: PropTypes.string,
     })
-  })
+  }),
+  stopTimer: PropTypes.func,
+  startTimer: PropTypes.func
 };
 
 export default withTimer(DisplayEmoji);

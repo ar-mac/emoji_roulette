@@ -8,9 +8,7 @@ export const withTimer = (WrappedComponent) => {
     };
 
     componentDidMount() {
-      this.intervalId = setInterval(() => {
-        this.setState({ secondsPassed: this.state.secondsPassed + 1 })
-      }, 1000);
+      this.startTimer()
     }
 
     componentDidUpdate() {
@@ -20,8 +18,14 @@ export const withTimer = (WrappedComponent) => {
     }
 
     componentWillUnmount() {
-      clearInterval(this.intervalId);
+      this.stopTimer()
     }
+
+    stopTimer = () => clearInterval(this.intervalId);
+
+    startTimer = () => this.intervalId = setInterval(() => {
+      this.setState({ secondsPassed: this.state.secondsPassed + 1 })
+    }, 1000);
 
     render() {
       const { resetTime, resetHandler, ...subProps } = this.props;
@@ -29,6 +33,8 @@ export const withTimer = (WrappedComponent) => {
       return <WrappedComponent
         {...subProps}
         secondsPassed={this.state.secondsPassed}
+        stopTimer={this.stopTimer}
+        startTimer={this.startTimer}
       />
     }
   }
