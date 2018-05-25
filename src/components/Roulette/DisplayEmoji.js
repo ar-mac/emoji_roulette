@@ -7,10 +7,13 @@ import { withTimer } from './withTimer';
 export class DisplayEmoji extends Component {
   readJoke = e => {
     e.preventDefault();
-    this.props.stopTimer();
+    const { stopTimer, startTimer } = this.props;
+    if(stopTimer) stopTimer()
     var msg = new SpeechSynthesisUtterance(`${this.props.draw.joke.value} reaction: ${this.props.draw.emoji.emojiIcon}`);
     window.speechSynthesis.speak(msg);
-    msg.onend = () => this.props.startTimer();
+    msg.onend = () => {
+      if(startTimer) startTimer()
+    };
   }
   render() {
     const { secondsPassed, draw: { emoji, joke } } = this.props;
